@@ -57,7 +57,11 @@ print(output)
 ```
 
 :black_small_square: [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3]
+
+
 :black_small_square: ['a', 'b', 'c', 'd']
+
+
 :white_check_mark:  [0, 1, 2, 3]
 
 ___
@@ -65,4 +69,22 @@ ___
 ### Conditional Statements
 
 Conditional statements use bookean logic to help guide our decision process: the statement is true or false. These statements are structured using comparison operators: greater than ('>'), less than ('<'), and equal to ('==').
+
+Using conditional statements for control flow is commplished in Python with the keywords:'if', 'else', and 'elif'. When doing multiple comparisons in Pyton, one after the other, the first comparison always uses 'if' and the last comparison generally uses 'else'. If additional control flow is needed, 'elif' statements can be used; 'elif' stands for "else if". 
+
+```Pthon 
+num = 5
+if num < 5:
+    print('The number is smaller than 5.')
+elif num == 5:
+    print('The number equals 5.')
+else:
+    print('The number is greater than 5.')
+```
+The code above would print: 'The number equals 5.'
+
+___
+
+### Control Stucture Practice 
+
 
