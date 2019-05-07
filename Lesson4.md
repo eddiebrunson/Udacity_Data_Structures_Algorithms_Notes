@@ -20,7 +20,7 @@ You can think of it as:
 * How long does your code take to run? 
 * How much storage space do you need?
 
-** Algorithms**
+**Algorithms**
 
 An **algorithm** is essentially a *series of steps for solving a problem.* Usually, an algorithm takes some kind of input (such as an unsorted list) and then produces the desired output (such as a sorted list). 
 
@@ -35,4 +35,83 @@ But in other  cases, a small difference in how your code is written--or a tiny c
 
 2. Quantifying Efficiency 
 
+It's fine to say "this algorithm is more efficient than that algorithm", but can we be more specific than that? Can we quantify things and say *how much* more efficient the algorithm is?
+
+Let's look at a simple example, so that we have something specific to consider. 
+
+Question 1:
+
+```Python 
+def some_function(n):
+	for i in range(2):
+		n += 100
+	return n
+```
+What does it do?
+
+**Adds 200 to the given input**
+
+Question 2:
+
+```Python
+def other_function(n):
+	for i in range(100):
+		n += 2
+	return n
+```
+What does it do?
+
+**Adds 200 to the given input.**
+
+Question 3:
+
+So these functions have exactly the same end result. But can you guess which one is more efficient?
+
+Compare:
+
+```Python 
+def some_function(n):
+	for i in range(2):
+		n += 100
+	return n
+
+def other_function(n):
+	for i in range(100):
+		n += 2
+	return n
+```
+
+**some_function is more efficient**
+
+
+Although the two functions have the exact same end result, one of them iterates many times to get to that result, while the other iterates only a couple of times. 
+
+THis was admittedly rather impractical example( you could sip the for loop althogether and just add 200 to the input), but it nevertheless demonstrates one way in which efficiency can come up. 
+
+___
+
+**Counting lines**
+
+With the above examples, what we basically did was count the number of lines of code that were executed. Let's look again at the first function:
+
+```Python
+def some_function(n):
+	for i in range(2):
+		n += 100
+	return n
+```
+There are four lines in total, but the line inside the for loop will get run twice. So running this code will involve running 5 lines. 
+
+Now let's look at the second example:
+
+```Python
+def other_function(n):
+	for i in range(100):
+		n += 2
+	return n
+```
+
+In this case, the code inside the loop runs 100 times. So running this code will involve running 103 lines!
+
+Counting lines of code is not a perfect way to quantify efficiency, and we'll see that there's a lot more to it as we go throught the program. But in this case, it's an easy way for use to approximate the difference in efficiency between the two solutions. We can see that if Python has to perform an addition operation 100 times, this will certainly take longer than if it only has to perform an addition operation twice! 
 
