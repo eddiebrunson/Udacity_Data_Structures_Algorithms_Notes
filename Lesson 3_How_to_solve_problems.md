@@ -57,4 +57,13 @@ def testDaysBetweenDates():
     
 testDaysBetweenDates()
 ```
+5. First Step 
 
+Quiz:
+
+What is the first thing we should do to solve a problem like this one?
+
+Start writing code
+<mark>Make sure we understand the problem </mark>
+Search Google for the answer 
+Work out an algorithm that solves it
