@@ -1,4 +1,4 @@
-# Lesson 2 Python Refresher
+# Lesson 2: Python Refresher
 
 ___
 
