@@ -201,6 +201,8 @@ So here's one thing that we know about this function: As the input increases, th
 
 But we can go further than that! We can also say that as the input increases, the number of lines executed increases by a proportional amount. Increasing the input by 1 will cause 1 more line to get run. Increasing the input by 10 will cause 10 more lines to get run. Any change in the input is tied to a consistent, proportional change in the number of lines executed. This type of relationship is called a **linear relationship**, and we can see why if we graph it:
 
+![Derivative of Comparison of computational complexity, by Cmglee](https://classroom.udacity.com/nanodegrees/nd256/parts/f74fc064-524b-4ee8-8fb1-570b3c31a993/modules/9bbb9a6d-d848-4153-a2fc-25065ee8d42d/lessons/b5ed8170-8fce-463a-aefc-64272cb3852e/concepts/b48195a5-6e34-4987-a275-662b82788908#)
+
 The horizontal axis, n, represents the size of the input (in this case, the number of times we want to print "Hello!").
 
 The vertical axis, N, represents the number of operations that will be performed. In this case, we're thinking of an "operation" as a single line of Python code (which is not the most accurate, but it will do for now).
@@ -251,6 +253,25 @@ The rate of increase of an algorithm is also referred to as the order of the alg
 For example, instead of saying "this relationship has a linear rate of increase", we could instead say, "the order of this relationship is linear".
 
 On the next page, we'll introduce something called Big O Notation, and you'll see that the "O" in the name refers to the order of the rate of increase.
+
+## 4. Big 0 Notation (1/2):
+
+
+**Big O Notation**
+
+When describing the efficiency of an algorithm, we could say something like "the run-time of the algorithm increases linearly with the input size". This can get wordy and it also lacks precision. So as an alternative, mathematicians developed a form of notation called big O notation.
+
+The "O" in the name refers to the order of the function or algorithm in question. And that makes sense, because big O notation is used to describe the order—or rate of increase—in the run-time of an algorithm, in terms of the input size (n).
+
+In this next video, Brynn will show some different examples of what the notation would actually look like in practice. This likely won't "click" for you right away, but don't worry—once you've gotten some experience applying it to real problems, it will be much more concrete.
+
+___
+
+The n in the Big O notation refers to the length of the input to your algorithm. 
+
+```
+O(0n + 1) == O(1)
+```
 
 
 
