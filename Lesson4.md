@@ -201,7 +201,7 @@ So here's one thing that we know about this function: As the input increases, th
 
 But we can go further than that! We can also say that as the input increases, the number of lines executed increases by a proportional amount. Increasing the input by 1 will cause 1 more line to get run. Increasing the input by 10 will cause 10 more lines to get run. Any change in the input is tied to a consistent, proportional change in the number of lines executed. This type of relationship is called a **linear relationship**, and we can see why if we graph it:
 
-![Derivative of Comparison of computational complexity, by Cmglee](https://classroom.udacity.com/nanodegrees/nd256/parts/f74fc064-524b-4ee8-8fb1-570b3c31a993/modules/9bbb9a6d-d848-4153-a2fc-25065ee8d42d/lessons/b5ed8170-8fce-463a-aefc-64272cb3852e/concepts/b48195a5-6e34-4987-a275-662b82788908#)
+[Derivative of Comparison of computational complexity, by Cmglee](https://classroom.udacity.com/nanodegrees/nd256/parts/f74fc064-524b-4ee8-8fb1-570b3c31a993/modules/9bbb9a6d-d848-4153-a2fc-25065ee8d42d/lessons/b5ed8170-8fce-463a-aefc-64272cb3852e/concepts/b48195a5-6e34-4987-a275-662b82788908#)
 
 The horizontal axis, n, represents the size of the input (in this case, the number of times we want to print "Hello!").
 
