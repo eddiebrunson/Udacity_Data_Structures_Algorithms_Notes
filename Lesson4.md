@@ -272,6 +272,36 @@ The n in the Big O notation refers to the length of the input to your algorithm.
 ```
 O(0n + 1) == O(1)
 ```
+**6. Worst Case and Approximation**
 
 
+Suppose that we analyze an algorithm and decide that it has the following relationship between the input size, n, and the number of operations needed to carry out the algorithm:
 
+N = $n^2$ + 5
+
+Where n is the input size and N is the number of operations required.
+
+For example, if we gave this algorithm an input of 2, the number of required operations would be $2^2+5$ or simply 9. 
+
+___
+
+The thing to notice in the above exercise, is this: In the $n^2+5$, 
+5 has very little impact on the total efficiency—especially as the input size gets larger and larger. Asking the computer to do 10,005 operations vs. 10,000 operations makes little difference. Thus, it is the $n^2$ that we really care about the most, and the '+5' makes little difference.
+
+Most of the time, when analyzing the efficiency of an algorithm, the most important thing to know is the order. In other words, we care a lot whether the algorithm's time-complexity has a linear order or a quadratic order (or some other order). This means that very often (in fact, most of the time) when you are asked to analyze an algorithm, you can do so by making an approximation that significantly simplifies things. In this next video, Brynn will discuss this concept and show how it's used with Big O Notation.
+
+
+**Approximation**
+
+Since, the amount of steps can vary widely based on the specific implementations, we normally use approximations when talking about efficiency in Big O notation. 
+By approximating we are saying that "Some number of computations must be performed for each letter in the input."
+
+**Worst Case**
+
+When discussing efficiency, we often talk about it in terms of the worst-case scenario.
+
+We focus on worst case because it puts a upper bound on the amount of time out code is going to take. 
+
+You could aslo talk about efficiency in terms of the average case or even best case. 
+
+*Make sure in your interview that you specify which case you are using: Best Case, Average Case, or Worst Case*
