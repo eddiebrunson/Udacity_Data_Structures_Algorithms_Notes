@@ -305,3 +305,31 @@ We focus on worst case because it puts a upper bound on the amount of time out c
 You could aslo talk about efficiency in terms of the average case or even best case. 
 
 *Make sure in your interview that you specify which case you are using: Best Case, Average Case, or Worst Case*
+
+**7. Efficiency Practice**
+
+```Python
+def main(x,y):
+    if True:
+        z = x + y
+    for i in range(10):
+        z+=1
+    return z
+
+# The run time analysis is O(1): the function is constant because the run time # does not change as a function of the input.    
+```
+
+
+---
+
+**8. Space Complexity**
+
+You can also use the same notation that you use in time efficiency in space efficiency. 
+
+
+When we refer to space complexity, we are talking about how efficient our algorithm is in terms of memory usage. This comes down to the datatypes of the variables we are using and their allocated space requirements. In Python, it's less clear how to do this due to the the underlying data structures using more memory for house keeping functions (as the language is actually written in C).
+
+For example, in C/C++, an integer type takes up 4 bytes of memory to store the value, but in Python 3 an integer takes 14 bytes of space. Again, this extra space is used for housekeeping functions in the Python language.
+
+
+
