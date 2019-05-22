@@ -331,7 +331,7 @@ When we refer to space complexity, we are talking about how efficient our algori
 
 For example, in C/C++, an integer type takes up 4 bytes of memory to store the value, but in Python 3 an integer takes 14 bytes of space. Again, this extra space is used for housekeeping functions in the Python language.
 
-Example 1 
+**Example 1**
 
 ```Python 
 def our_constant_function();
@@ -347,7 +347,22 @@ def our_constant_function();
 
 So in this example we have four integers (x, y, z and answer) and therefore our space complexity will be 4*4 = 16 bytes. This is an example of constant space complexity, since the amount of space used does not change with input size.
 
+**Example 2**
 
+```Python 
 
+def out_linear_function(n):
 
+	n = n # Type int
+	counter = 0 # Type int
+	list_ = [] # Assume that the list is empty (i.e., ignore the fact that there is actually meta data stored with python lists)
+
+	while counter < n:
+		list. append(counter)
+		counter = counter + 1
+
+	return list_
+
+```
+So in this example we have two integers (n and counter) and an expanding list, and therefore our space complexity will be 4*n + 8 since we have an expanding integer list and two integer data types. This is an example of linear space complexity.
 
