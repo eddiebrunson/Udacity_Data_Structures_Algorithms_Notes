@@ -331,5 +331,23 @@ When we refer to space complexity, we are talking about how efficient our algori
 
 For example, in C/C++, an integer type takes up 4 bytes of memory to store the value, but in Python 3 an integer takes 14 bytes of space. Again, this extra space is used for housekeeping functions in the Python language.
 
+Example 1 
+
+```Python 
+def our_constant_function();
+
+    x = 3 # Type int
+    y = 345 # Type int
+    z = 11 # Type Int 
+
+    answer = x+y+z
+
+    return answer 
+```
+
+So in this example we have four integers (x, y, z and answer) and therefore our space complexity will be 4*4 = 16 bytes. This is an example of constant space complexity, since the amount of space used does not change with input size.
+
+
+
 
 
