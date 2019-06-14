@@ -328,3 +328,33 @@ print ("Pass" if (2 == hamming_distance(('01011010100011101', '0101010100010001'
 </p>
 </details>
 
+___
+
+#### 5. Linked Lists Introduction
+
+You can think of an array as a set of boxes where each has an address called an index. 
+
+A paper chaing is like a similar construct called a linked list. 
+
+A linked list is an extension of a list, but is definitely not an array. 
+
+There are still some things that have order, but there are no indices. 
+
+A linked list is characterized by its links. 
+
+Each element has some notion of waht the next element is since it's connected to it, but not necessarily how long the list is or where it is in the list. 
+
+An array is different. There is nothing in one element of the array that says here's your next element. You know what the next element is by what the next index is. 
+
+Adding or removing an element on a array is difficult. Although, adding or removing elements from a linked list turns out to be so simple. 
+
+You could just take one element out or add one in. 
+
+___
+
+#### 6. Linked Lists Continued 
+
+The main difference between linked lists and arrays, is that each element stores different information. 
+
+
+
