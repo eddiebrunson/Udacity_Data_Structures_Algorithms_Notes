@@ -4,7 +4,7 @@
 
 **Why data structures?**
 
-1. Lists 
+#### 1. Lists 
 
 *Data Structures* are containers that organize and group data together in different ways. When you write code to solve a problem, there will always be data involved--and how you store or structure that data in the computer's memory can have a huge impact on what kinds of things you can do with it and how efficiently you can do those things. 
 
@@ -17,7 +17,7 @@ There are many data structures that add rules to collections to be used in progr
 
 ___
 
-2. Lists
+#### 2. Lists
 
 Have all of the properties of a collection. It havs a group of things but the objects have order. 
 
@@ -33,7 +33,7 @@ Different programming languages treat lists differently.
 
 ___
 
-3. Arrays
+#### 3. Arrays
 
 **Arrays vs. lists vs. Python lists**
 
@@ -131,7 +131,7 @@ In summary:
 
 * For this course, we will generally ignore this high-level functionality and treat Python lists as if they were simple arrays. 
 
-4. Strings Exercises
+#### 4. Strings Exercises
 
 **Intro**
 
