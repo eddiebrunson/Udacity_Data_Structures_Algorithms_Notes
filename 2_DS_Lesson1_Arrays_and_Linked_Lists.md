@@ -104,6 +104,7 @@ In addition to the underlying array, a Python list also includes some additional
 
 In generally, we will try to avoid using things like `pop` and `append`, because these are high-level language features that may not be available to you in other languages. In most cases, we will ignore the extra functionality that comes with Python lists, and instead use them **as if they were simple arrays.** This allows us to see how the underlying data structures work, regardless of the language you are using to implement those structures. 
 
+___
 
 Arrays are the most common implementations of lists. 
 
@@ -129,5 +130,45 @@ In summary:
 * Python lists are essentially arrays, but also include additional high-level functionality
 
 * For this course, we will generally ignore this high-level functionality and treat Python lists as if they were simple arrays. 
+
+4. Strings Exercises
+
+**Intro**
+
+Strings in Python are arrays of bytes representing unicode characaters. In this exercise we are going to practice our work with string manipulation. 
+
+**Reverse Strings**
+
+In the first exercise, the goal is to write a function that takes a string as input and then returns the reversed string. 
+
+For example, if the input is the string `"water"`, then the output should be `"retaw"`.
+
+While working on the function and trying to figure out how to manipulate the string, it may help to use the `print` statement so you can see the effects of whatever you are trying. 
+
+```Python
+
+def string_reverser(our_string):
+
+	"""
+	Reverse the input string 
+
+	Args: 
+	   our_string(string): String to be reversed 
+	Returns: 
+	   string: The reversed string
+	"""
+
+	# TODO: Write your solution here 
+
+	pass
+
+# Test Cases
+
+print ("Pass" if ('retaw' == string_reverser('water')) else "Fail")
+print ("Pass" if ('!noitalupinam gnirts gnicitcarP' == string_reverser('Practicing string manipulation!')) else "Fail")
+print ("Pass" if ('3432 :si edoc esuoh ehT' == string_reverser('The house code is: 2343')) else "Fail")
+```
+
+**Anagrams**
 
 
