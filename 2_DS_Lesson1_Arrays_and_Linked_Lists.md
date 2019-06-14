@@ -104,6 +104,24 @@ In addition to the underlying array, a Python list also includes some additional
 
 In generally, we will try to avoid using things like `pop` and `append`, because these are high-level language features that may not be available to you in other languages. In most cases, we will ignore the extra functionality that comes with Python lists, and instead use them **as if they were simple arrays.** This allows us to see how the underlying data structures work, regardless of the language you are using to implement those structures. 
 
+
+Arrays are the most common implementations of lists. 
+
+In many programming languages arrays are built in as a core feature. 
+
+In some langauges you can only have objects of the same type in the same array. And in some langauages your array can contain different types.
+
+Insertions and deletions can be really messy with arrays. Inserting in the end is often easy but it can be hard if the arrays has a set size and you've alread filled it up. 
+
+Insertion is difficult if you want to put an element in the middle of the array. If you want to do a normal insert you'll have to move everything after the inserted element back into different boxes with a different index. 
+
+The operation as a whole is pretty inefficient since you need to move every element behind the one you're inserting back in the array. 
+
+In the worst case this operation take *linear time or big O of n.*
+
+Deletion causes a similar problem. If you delete an element you will have an empty box. 
+
+You can't just look at the index and say that this is the fourth element anymore since there is an empty box before it. This can change based on the way a particular language implements an array but it's important to consider when talking abour arrays abstractly. 
 ___
 
 In summary:
