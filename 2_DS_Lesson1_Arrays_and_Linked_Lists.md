@@ -223,7 +223,8 @@ print ("Pass" if anagram_checker('Time and tide wait for no man','Notified madma
 ```
 
 
-**Solution**
+<details><summary><b>Solution</b></summary>
+<p>
 
 ```Python 
 
@@ -233,6 +234,9 @@ print ("Pass" if anagram_checker('Time and tide wait for no man','Notified madma
 
 
 ```
+</p>
+</details>
+
 
 ___
 
@@ -240,4 +244,87 @@ ___
 **Reverse the words in sentence**
 
 Given a sentence, reverse each word in the sentence while keeping the order the same!
+
+
+```Python
+def word_flipper(our_string):
+
+   """
+   Flip the individual words in a sentence 
+
+   Args:
+      our_string(string): String with words to flip
+   Return: 
+      string: String with words flipped
+   """
+
+   # TODO: Write your solution here 
+
+   pass
+
+# Test Cases
+
+print ("Pass" if ('retaw' == word_flipper('water')) else "Fail")
+print ("Pass" if ('sihT si na elpmaxe' == word_flipper('This is an example')) else "Fail")
+print ("Pass" if ('sihT si eno llams pets rof ...' == word_flipper('This is one small step for ...')) else "Fail")
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+
+# TODO
+
+
+
+
+```
+</p>
+</details>
+
+___
+
+**Hamming Distance**
+
+In information theory, the Hamming distance between two strings of equal lengths is the number of positions at which the corresponding symbols are different. Calculate the Hamming distance for the following test cases. 
+
+```Python 
+
+def hamming_distance(str1, str2):
+	"""
+	Calculate the hamming distance of the two strings 
+
+	Args:
+	   str1(string), str2(string): Strings to be used for finding the hamming distance 
+	Returns:
+	   int: Hamming Distance 
+	"""
+
+	# TODO: Write your solution here
+
+	pass
+
+# Test Cases 
+
+print ("Pass" if (10 == hamming_distance('ACTTGACCGGG', 'GATCCGGTACA')) else "Fail")
+print ("Pass" if (1 == hamming_distance('shove', 'stove')) else "Fail")
+print ("Pass" if (None == hamming_distance('Slot machines', 'Cash lost in me')) else "Fail")
+print ("Pass" if (9 == hamming_distance(('A gentleman', 'Elegant men')) else "Fail"))
+print ("Pass" if (2 == hamming_distance(('01011010100011101', '0101010100010001')) else "Fail"))
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+
+# TODO
+
+
+
+
+```
+</p>
+</details>
 
