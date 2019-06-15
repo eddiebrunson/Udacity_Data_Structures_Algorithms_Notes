@@ -428,7 +428,7 @@ The connection is typyically implemented by setting the `next` attribute on a no
 
 ```Python
 class Node:
-	def __inti__(self, value):
+	def __init__(self, value):
 		self.value = value 
 		self.next = None
 
@@ -531,3 +531,76 @@ This type of list has connnections backwards and forwards through the list.
 
                                      2 --> 1 --> 4 --> 3 --> 5 
                                       <--    <--   <--  <--
+
+```Python 
+class DoubleNode:
+	def __init__(self, value):
+		self.value = value 
+		self.next = None 
+		self.previous = None 
+```
+
+Now that we have backwards connections it makes sense to track the tail of the linked list as well as the head. 
+
+**Exercise:** Implement a doubly linked list that can append to the tail in constant time. Make sure to include forward and backwards connections when adding a new node to the list. 
+
+```Python 
+class DoublyLinkedList: 
+   def __init__(self, value):
+       self.head = None  
+       self.tail = None 
+
+   def append(self, value):
+
+      # TODO: Implement this method to append to the tail of the list 
+
+      pass 
+
+      # Test your class here 
+
+      linked_list = DoublyLinkedList()
+      linked_list.append(1)
+      linked_list.append(-2)
+      linked_list.append(4)
+
+      print ("Going forward through the list, should print 1, -2, 4")
+      node = linked_list.head
+      while node:
+         print(node.value)
+         node.ext 
+      print ("\nGoing backward through the list, should print 4, -2, 1")
+      node = linked_list.tail
+      while node: 
+         print(node.value)
+         node = node.previous
+
+```
+
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+
+# TODO
+
+
+
+
+```
+</p>
+</details>
+
+___
+
+**Circular Linked Lists**
+
+Circular linked lists occur when the chain of nodes links back to itself somewhere. For example `NodeA -> NodeB -> NodeC -NodeD -> NodeB` is a circular list because `NodeD` points back to `NodeB` creating a loop `NodeB -> NodeC -> NodeD -> NodeB`.
+
+
+
+A circular linked list is typically consider pathological because when you try to iterate throught it, you'll never find the end. Wer usually want to detect if there is a loop in our linked lists to aviod these problems.
+
+
+
+ 
