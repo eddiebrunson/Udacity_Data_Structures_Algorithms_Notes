@@ -169,13 +169,21 @@ print ("Pass" if ('!noitalupinam gnirts gnicitcarP' == string_reverser('Practici
 print ("Pass" if ('3432 :si edoc esuoh ehT' == string_reverser('The house code is: 2343')) else "Fail")
 ```
 
-**Solution**
+<details><summary><b>Solution</b></summary>
+<p>
 
-```Python
-#TODO
+```Python 
+
+# TODO
+
+
 
 
 ```
+</p>
+</details>
+
+___
 
 **Anagrams**
 
