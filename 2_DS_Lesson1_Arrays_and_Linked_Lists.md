@@ -4,7 +4,7 @@
 
 **Why data structures?**
 
-#### 1. Lists 
+### 1. Lists 
 
 *Data Structures* are containers that organize and group data together in different ways. When you write code to solve a problem, there will always be data involved--and how you store or structure that data in the computer's memory can have a huge impact on what kinds of things you can do with it and how efficiently you can do those things. 
 
@@ -17,7 +17,7 @@ There are many data structures that add rules to collections to be used in progr
 
 ___
 
-#### 2. Lists
+### 2. Lists
 
 Have all of the properties of a collection. It havs a group of things but the objects have order. 
 
@@ -33,7 +33,7 @@ Different programming languages treat lists differently.
 
 ___
 
-#### 3. Arrays
+### 3. Arrays
 
 **Arrays vs. lists vs. Python lists**
 
@@ -131,7 +131,7 @@ In summary:
 
 * For this course, we will generally ignore this high-level functionality and treat Python lists as if they were simple arrays. 
 
-#### 4. Strings Exercises
+### 4. Strings Exercises
 
 **Intro**
 
@@ -338,7 +338,7 @@ print ("Pass" if (2 == hamming_distance(('01011010100011101', '0101010100010001'
 
 ___
 
-#### 5. Linked Lists Introduction
+### 5. Linked Lists Introduction
 
 You can think of an array as a set of boxes where each has an address called an index. 
 
@@ -360,7 +360,7 @@ You could just take one element out or add one in.
 
 ___
 
-#### 6. Linked Lists Continued 
+### 6. Linked Lists Continued 
 
 The main difference between *linked lists* and *arrays*, is that each element stores different information. 
 
@@ -393,7 +393,7 @@ You can traverse the list in both directions now.
 ___
 
 
-#### Implement a Linked List 
+### Implement a Linked List 
 
 Practice implementing a basic linked list:
 
@@ -409,7 +409,7 @@ Let's review the overall abstract concepts for this data structure.
 
 
 
-#### 8. Types of Linked Lists
+### 8. Types of Linked Lists
 
 There versions of linked-lists:
 
@@ -1015,4 +1015,143 @@ print("Pass" if is_correct else "Fail")
 </p>
 </details>
 
+___
+
+
+### 11. Loop Detection 
+
+** Detecting Loops in Linked Lists**
+
+Here we'll implement a function that detects if a loop exists in a linked list. The way we'll do this is by having two pointers, called "runners", moving through the list at different rates. Typically we have a "slow" runner which moves at one node per step and a "fast" runner that moves at two nodes per step.
+
+If a loop exists in the list, the fast runner will eventually move behind the slow runner as it moves to the beginning of the loop. Eventually it will catch up to the slow runner and both runners will be pointing to the same node at the same time. If this happens then you know there is a loop in the linked list. Below is an example where we have a slow runner (the green arrow) and a fast runner (the red arrow).
+
+
+
+
+
+```Python
+
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+        
+class LinkedList:
+    def __init__(self, init_list=None):
+        self.head = None
+        if init_list:
+            for value in init_list:
+                self.append(value)
+        
+    def append(self, value):
+        if self.head is None:
+            self.head = Node(value)
+            return
+        
+        # Move to the tail (the last node)
+        node = self.head
+        while node.next:
+            node = node.next
+        
+        node.next = Node(value)
+        return
+```
+
+```Python
+
+list_with_loop = LinkedList([2, -1, 3, 0, 5])
+
+# Creating a loop where the last node points back to the second node
+loop_start = list_with_loop.head.next
+
+node = list_with_loop.head
+while node.next: 
+    node = node.next   
+node.next = loop_start
+
+```
+
+**Exercise:** Given a linked list, implement a function iscircular that returns True if a loop exists in the list and False otherwise.
+
+```Python 
+def iscircular(linked_list):
+    """
+    Determine wether the Linked List is circular or not
+
+    Args:
+       linked_list(obj): Linked List to be checked
+    Returns:
+       bool: Return True if the linked list is circular, return False otherwise
+    """
+    
+    # TODO: Write function to check if linked list is circular
+    
+    pass
+```
+
+```Python 
+
+# Test Cases
+
+small_loop = LinkedList([0])
+small_loop.head.next = small_loop.head
+print ("Pass" if iscircular(list_with_loop) else "Fail")
+print ("Pass" if not iscircular(LinkedList([-4, 7, 2, 5, -1])) else "Fail")
+print ("Pass" if not iscircular(LinkedList([1])) else "Fail")
+print ("Pass" if iscircular(small_loop) else "Fail")
+print ("Pass" if not iscircular(LinkedList([])) else "Fail")
+
+```
+
+___
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+
+# Soultion
+
+# Solution
+
+def iscircular(linked_list):
+    """
+    Determine wether the Linked List is circular or not
+
+    Args:
+       linked_list(obj): Linked List to be checked
+    Returns:
+       bool: Return True if the linked list is circular, return False otherwise
+    """
+
+    if linked_list.head is None:
+        return False
+    
+    slow = linked_list.head
+    fast = linked_list.head
+    
+    while fast and fast.next:
+        # slow pointer moves one node
+        slow = slow.next
+        # fast pointer moves two nodes
+        fast = fast.next.next
+        
+        if slow == fast:
+            return True
+    
+    # If we get to a node where fast doesn't have a next node or doesn't exist itself, 
+    # the list has an end and isn't circular
+    return False
+
+small_loop = LinkedList([0])
+small_loop.head.next = small_loop.head
+print ("Pass" if iscircular(list_with_loop) else "Fail")
+print ("Pass" if not iscircular(LinkedList([-4, 7, 2, 5, -1])) else "Fail")
+print ("Pass" if not iscircular(LinkedList([1])) else "Fail")
+print ("Pass" if iscircular(small_loop) else "Fail")
+print ("Pass" if not iscircular(LinkedList([])) else "Fail")
+```
+</p>
+</details>
  
