@@ -362,7 +362,172 @@ ___
 
 #### 6. Linked Lists Continued 
 
-The main difference between linked lists and arrays, is that each element stores different information. 
+The main difference between *linked lists* and *arrays*, is that each element stores different information. 
+
+* It's important to know the differences between the two data structures as it is asked in interviews often. 
+
+
+* It both cases a single element can store a value 
+* In an **array** we store a number as an index 
+* You can get the next element by querying the array for the element at index one in this case. 
+
+Where as in a **linked list**, we store a reference to the next element in the list. In many languages this will look like assigning the actual next element as a proerty of this element. Way down at the hardware level your element actually has some space dedicated for it in memory. 
+
+It's pretty easy to insert and delete elements. 
+
+Adding an element changes the next reference to point to the new object and done. 
+
+**Important** if you delete the next reference and replace it with a new object. You'll lose your reference to this object, you should always assign your next pointer for this element before you assign your next pointer for this element, so you don't lose your reference to th is one down here. 
+
+* Note that insertion takes constant time in this case, since you are just shifting around pointers and not iterating over every element in the list. 
+
+Removing an element is going to look pretty similar.
+
+There is also something called a **Doubly linked lists**, where you have pointers to the next element and the previous element.
+
+You can traverse the list in both directions now. 
+
+* Be careful not to lose references when adding or removing elements but it's easier than performing these operation on an array. 
+
+
+___
+
+
+#### Implement a Linked List 
+
+Practice implementing a basic linked list:
+
+  2 --> 1 --> 4 --> 3 --> 5 --> None 
+
+Head
+
+___
+
+**Key characteristics**
+
+Let's review the overall abstract concepts for this data structure. 
 
 
 
+#### 8. Types of Linked Lists
+
+There versions of linked-lists:
+
+* Singly-linked lists
+* Doubly-linked lists
+* Circular lists
+
+**Singly Linked Lists**
+
+In this linked list, each node in the list is connected only to the next node in the list. 
+
+                             **Singly Linked List**
+
+                          2 --> 1 --> 4 --> 3 --> 5
+The connection is typyically implemented by setting the `next` attribute on a node object itself. 
+
+```Python
+class Node:
+	def __inti__(self, value):
+		self.value = value 
+		self.next = None
+
+# A small linked list:
+
+
+head = Node(1)
+head.next = Node(2)
+```
+
+Above shows a simple linked list with two elements `[1, 2]`. Usually you'll want to create a `LinkedList` class as a wrapper for the nodes themselves and to provide common methods that operate on the list. For example you can implement an `append` method that adds a value to the end of the list. 
+
+Note, that if we're only tracking the head of the list, this *runs in linear time -**O(N)*** since you have to iterate through the entire list to get to the tail node. However, prepending (adding to the head of the list) can be done in constant **O(1)** time. 
+
+```Python 
+class LinkedList:
+	def __init__(self):
+		self.head = None 
+
+	def append(self, value):
+		if self.head = Node(value)
+		return 
+
+    # Move to the tail (the last node)
+    node = self.head 
+    while node.next:
+    	node = node.next 
+
+   node.next = Node(value)
+   return
+
+
+linked_list = LinkedList()
+linked_list.append(1)
+linked_list.append(2)
+linked_list.append(4)
+
+node = linked_list.head
+while node:
+	print(node.value)
+	node = node.next
+```
+**Exercise:** Add a method `to_list()` to `LinkedList` that converts a linked list back into a Python list.
+
+```Python 
+class LinkedList: 
+	def __init__(self):
+		self.head = None 
+
+	def append(self, value):
+		if self.head is None:
+			self.head = Node(value)
+			return
+
+		# Move to the tail (the last node)
+		node = self.head
+		while node.next:
+			node = node.next
+
+		node.next = Node(value)
+		return
+
+	def to_list (self):
+
+		# TODO: Write function to turn Linked List into Python List
+
+		pass 
+
+		# Test your method here 
+		linked_list = LinkedList()
+		linked_list.append(3)
+		linked_list.append(2)
+		linked_list.append(-1)
+		linked_list.append(0.2)
+
+		print ("Pass" if (linked_list.to_list() == [3, 2, -1, 0.2]) else "Fail")
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+
+# TODO
+
+
+
+
+```
+</p>
+</details>
+
+___
+
+**Doubly Linked Lists**
+
+This type of list has connnections backwards and forwards through the list. 
+
+                                     Doubly Linked List
+
+                                     2 --> 1 --> 4 --> 3 --> 5 
+                                      <--    <--   <--  <--
