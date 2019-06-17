@@ -1376,19 +1376,6 @@ def add_one(arr):
 <p>
 
 ```Python 
-
-# TODO
-
-
-
-
-```
-</p>
-</details>
-
-___
-
-```Python 
 # Solution
 def add_one(arr):
     output = 1;
@@ -1407,7 +1394,10 @@ def add_one(arr):
     while arr[index]==0:
         index += 1
     return arr[index:]
+
 ```
+</p>
+</details>
 
 ___
 
@@ -1460,3 +1450,196 @@ ___
 Given an array of `length = n`. The array contains integers from `0` to `n-2`. Each number in the array is present exactly once except for one number which is present twice. Find and return this duplicate number in the array. 
 
 **Example:** 
+
+* `arr = [0, 2, 3, 1, 4, 5, 3]`
+* `output = 3` (because `3` is present twice)
+
+This expected time complexity for this problem is `O(n)` and the expected space-complexity is O(1).
+
+```Python 
+def duplicate_number(arr):
+	"""
+
+	:param - array containing numbers in the range [0, len(arr) -2]
+	return - the number that is duplicate in the arr
+	"""
+
+	pass
+```
+
+details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+# Solution
+def duplicate_number(arr):
+    current_sum = 0
+    expected_sum = 0
+    
+    for num in arr:
+        current_sum += num
+        
+    for i in range(len(arr) - 1):
+        expected_sum += i
+    return current_sum - expected_sum
+```
+</p>
+</details>
+
+___
+
+```Python
+def test_function(test_case):
+	arr = test_case[0]
+	solution = test_case[1]
+	output = duplicate_number(arr)
+	if output == solution:
+		print("Pass")
+	else:
+		print("Fail")
+```
+
+```Python 
+arr = [0, 0]
+solution = 0
+
+test_case = [arr, solution]
+test_function(test_case)
+```
+Pass
+
+```Python 
+arr = [0, 2, 3, 1, 4, 5, 3]
+solution = 3
+
+test_case = [arr, solution]
+test_function(test_case)
+```
+Pass
+
+```Python
+arr = [0, 1, 5, 4, 3, 2, 0]
+solution = 0
+
+test_case = [arr, solution]
+test_function(test_case)
+```
+
+Pass
+
+```Python
+arr = [0, 1, 5, 5, 3, 2, 4]
+solution = 5
+
+test_case = [arr, solution]
+test_function(test_case)
+```
+Pass
+
+___
+
+### 15. Max Sum Subarray
+
+**Problem Statement**
+
+Given an array containing numbers. Find and return the largest sum in a contiguous subarray within the input array. 
+
+**Example 1:**
+
+* `arr= [1, 2, 3, -4, 6]`
+* The largest sum is `8`, which is the sum of all elements of the array. 
+
+**Example 2:**
+
+* `arr = [1, 2, -5, -4, 1, 6]`
+* The largest sum is `7`, which is the sum of the last two elements of the array. 
+
+```Python
+
+def max_sum_subarray(arr):
+    """
+    :param - arr - input array
+    return - number - largest sum in contiguous subarry within arr
+    """
+    pass
+```
+
+```Python 
+# Solution
+# Solution
+def max_sum_subarray(arr):
+    max_sum = arr[0]
+    current_sum = arr[0]
+
+    for num in arr[1:]:
+        current_sum = max(current_sum + num, num)
+        max_sum = max(current_sum, max_sum)
+    return max_sum
+```
+</p>
+</details>
+
+___
+
+
+```Python
+def test_function(test_case):
+    arr = test_case[0]
+    solution = test_case[1]
+    
+    output = max_sum_subarray(arr)
+    if output == solution:
+        print("Pass")
+    else:
+        print("Fail")
+```
+```Python
+arr= [1, 2, 3, -4, 6]
+solution= 8 # sum of array
+
+test_case = [arr, solution]
+test_function(test_case)
+```
+
+Pass
+
+```Python
+arr = [1, 2, -5, -4, 1, 6]
+solution = 7   # sum of last two elements
+
+test_case = [arr, solution]
+test_function(test_case)
+```
+Pass
+
+```Python
+arr = [-12, 15, -13, 14, -1, 2, 1, -5, 4]
+solution = 18  # sum of subarray = [15, -13, 14, -1, 2, 1]
+
+test_case = [arr, solution]
+test_function(test_case)
+```
+
+Pass
+
+___
+
+### 16. Pascal's Triangle 
+
+**Problem Statement**
+
+Find and return the `nth` row of Pascal's triangle in the form of a list. `n` is 0-based. 
+
+For example, if `n = 4`, then the `output = [1, 4, 6, 1]`. 
+
+[To learn more about Pascal's triangle:](https://wwww.mathisfun.com/pascals-triangle.html)
+
+```Python
+def nth_row_pascal(n):
+    """
+    :param: - n - index (0 based)
+    return - list() representing nth row of Pascal's triangle
+    """
+```
+
+
