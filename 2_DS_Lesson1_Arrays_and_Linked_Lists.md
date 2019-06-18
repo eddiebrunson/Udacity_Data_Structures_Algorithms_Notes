@@ -581,7 +581,6 @@ class DoublyLinkedList:
 <p>
 
 ```Python 
-
 # TODO
 
 
@@ -745,7 +744,6 @@ ___
 <p>
 
 ```Python 
-
 # Solution
 
 class LinkedList:
@@ -946,9 +944,6 @@ ___
 <p>
 
 ```Python 
-
-# Solution
-
 # Solution
 
 class Node:
@@ -1031,7 +1026,6 @@ If a loop exists in the list, the fast runner will eventually move behind the sl
 
 
 ```Python
-
 class Node:
     def __init__(self, value):
         self.value = value
@@ -1059,7 +1053,6 @@ class LinkedList:
 ```
 
 ```Python
-
 list_with_loop = LinkedList([2, -1, 3, 0, 5])
 
 # Creating a loop where the last node points back to the second node
@@ -1091,7 +1084,6 @@ def iscircular(linked_list):
 ```
 
 ```Python 
-
 # Test Cases
 
 small_loop = LinkedList([0])
@@ -1110,9 +1102,6 @@ ___
 <p>
 
 ```Python 
-
-# Soultion
-
 # Solution
 
 def iscircular(linked_list):
@@ -1267,7 +1256,7 @@ def merge(list1, list2):
  Let's make sure merge works how we expect:
 
 ```Python
- linked_list = LinkedList(Node(1))
+linked_list = LinkedList(Node(1))
 linked_list.append(3)
 linked_list.append(5)
 
@@ -2067,7 +2056,7 @@ def swap_nodes(head, left_index, right_index):
 ```
 <details><summary><b>Solution</b></summary>
 <p>
-	
+
 ```Python 
 # Solution
 
