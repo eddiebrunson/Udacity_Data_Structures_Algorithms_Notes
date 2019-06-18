@@ -2227,6 +2227,380 @@ Well, when we use `enqueue`, we simply create a new node and add it to the tail 
 Both of these operations happen in constant time—that is, they have a *time-complexity* of **O(1)**.
 
 
+### 13. Build a Queue From Stacks
+
+Create a queue with just stacks.
+
+**Code**
+
+```Python 
+# Here is our Stack Class
+
+class Stack:
+    def __init__(self):
+        self.items = []
+    
+    def size(self):
+        return len(self.items)
+    
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if self.size()==0:
+            return None
+        else:
+            return self.items.pop()
+
+class Queue:
+    def __init__(self):
+        # Code here
+        
+    def size(self):
+         # Code here
+        
+    def enqueue(self,item):
+        # Code here
+        
+    def dequeue(self):
+        # Code here
+```
+**Test Cases**
+
+```Python 
+# Setup
+q = Queue()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+
+# Test size
+print ("Pass" if (q.size() == 3) else "Fail")
+
+# Test dequeue
+print ("Pass" if (q.dequeue() == 1) else "Fail")
+
+# Test enqueue
+q.enqueue(4)
+print ("Pass" if (q.dequeue() == 2) else "Fail")
+print ("Pass" if (q.dequeue() == 3) else "Fail")
+print ("Pass" if (q.dequeue() == 4) else "Fail")
+q.enqueue(5)
+print ("Pass" if (q.size() == 1) else "Fail")
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+# Solution 
+
+# Here is our Stack Class
+
+class Stack:
+    def __init__(self):
+        self.items = []
+    
+    def size(self):
+        return len(self.items)
+    
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if self.size()==0:
+            return None
+        else:
+            return self.items.pop()
+
+class Queue:
+    def __init__(self):
+        self.instorage=Stack()
+        self.outstorage=Stack()
+        
+    def size(self):
+         return self.outstorage.size() + self.instorage.size()
+        
+    def enqueue(self,item):
+        self.instorage.push(item)
+        
+    def dequeue(self):
+        if not self.outstorage.items:
+            while self.instorage.items:
+                self.outstorage.push(self.instorage.pop())
+        return self.outstorage.pop()
+    
+        
+# Setup
+q = Queue()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+
+# Test size
+print ("Pass" if (q.size() == 3) else "Fail")
+
+# Test dequeue
+print ("Pass" if (q.dequeue() == 1) else "Fail")
+
+# Test enqueue
+q.enqueue(4)
+print ("Pass" if (q.dequeue() == 2) else "Fail")
+print ("Pass" if (q.dequeue() == 3) else "Fail")
+print ("Pass" if (q.dequeue() == 4) else "Fail")
+q.enqueue(5)
+print ("Pass" if (q.size() == 1) else "Fail") 
+```
+</p>
+</details>
+
+___
 
 
+### 14. Build a Queue Using High-Level Python 
+
+Before we start let us reiterate the key components of a queue.
+
+A queue is a data structure that consists of two main operations: enqueue and dequeue.
+
+Enqueue is when you add a element to the tail of the queue and a pop is when you remove an element from the head of the queue.
+
+Python 3.x conviently allows us to demonstate this functionality with a list. When you have a list such as [2,4,5,6] you can decide which end of the list is the front and the back of the queue respectively.
+
+Once you decide that, you can use the append, pop or insert function to simulate a queue.
+
+We will choose the first element to be the front of our queue and therefore be using the append and pop functions to simulate it. Give it a try by implementing the function below!
+
+**Try Building a Queue** 
+
+```Python 
+class Queue:
+    def __init__(self):
+         # TODO: Initialize the Queue
+    
+    def size(self):
+         # TODO: Check the size of the Queue
+    
+    def enqueue(self, item):
+         # TODO: Enter item into Queue
+
+    def dequeue(self):
+         # TODO: Remove item from the Queue
+```
+**Test the Queue**
+
+```Python 
+# Setup
+q = Queue()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+
+# Test size
+print ("Pass" if (q.size() == 3) else "Fail")
+
+# Test dequeue
+print ("Pass" if (q.dequeue() == 1) else "Fail")
+
+# Test enqueue
+q.enqueue(4)
+print ("Pass" if (q.dequeue() == 2) else "Fail")
+print ("Pass" if (q.dequeue() == 3) else "Fail")
+print ("Pass" if (q.dequeue() == 4) else "Fail")
+q.enqueue(5)
+print ("Pass" if (q.size() == 1) else "Fail")
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+# Solution 
+
+class Queue:
+    def __init__(self):
+         self.storage = []
+    
+    def size(self):
+         return len(self.storage)
+    
+    def enqueue(self, item):
+         self.storage.append(item)
+
+    def dequeue(self):
+         return self.storage.pop(0)
+
+        
+# Setup
+q = Queue()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+
+# Test size
+print ("Pass" if (q.size() == 3) else "Fail")
+
+# Test dequeue
+print ("Pass" if (q.dequeue() == 1) else "Fail")
+
+# Test enqueue
+q.enqueue(4)
+print ("Pass" if (q.dequeue() == 2) else "Fail")
+print ("Pass" if (q.dequeue() == 3) else "Fail")
+print ("Pass" if (q.dequeue() == 4) else "Fail")
+q.enqueue(5)
+print ("Pass" if (q.size() == 1) else "Fail")
+
+```
+</p>
+</details>
+
+___
+
+### 15. Reverse a Queue 
+
+Write a function that takes a queue as an input and returns a reversed version of it.
+
+```Python 
+class LinkedListNode:
+
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class Stack:
+
+    def __init__(self):
+        self.num_elements = 0
+        self.head = None
+
+    def push(self, data):
+        new_node = LinkedListNode(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.num_elements += 1
+
+    def pop(self):
+        if self.is_empty():
+            return None
+        temp = self.head.data
+        self.head = self.head.next
+        self.num_elements -= 1
+        return temp
+
+    def top(self):
+        if self.head is None:
+            return None
+        return self.head.data
+
+    def size(self):
+        return self.num_elements
+
+    def is_empty(self):
+        return self.num_elements == 0
+
+
+        
+class Queue:
+
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.num_elements = 0
+
+    def enqueue(self, data):
+        new_node = LinkedListNode(data)
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+        self.num_elements += 1
+
+    def dequeue(self):
+        if self.is_empty():
+            return None
+        temp = self.head.data
+        self.head = self.head.next
+        self.num_elements -= 1
+        return temp
+
+    def front(self):
+        if self.head is None:
+            return None
+        return self.head.data
+
+    def size(self):
+        return self.num_elements
+
+    def is_empty(self):
+        return self.num_elements == 0
+```
+
+
+```Python 
+def reverse_queue(queue):
+    """
+    Reverese the input queue
+
+    Args:
+       queue(queue),str2(string): Queue to be reversed
+    Returns:
+       queue: Reveresed queue
+    """
+    
+    # TODO: Write reversed queue function
+    
+    pass
+```
+```Python
+def test_function(test_case):
+    queue = Queue()
+    for num in test_case:
+        queue.enqueue(num)
+    
+    reverse_queue(queue)
+    index = len(test_case) - 1
+    while not queue.is_empty():
+        removed = queue.dequeue()
+        if removed != test_case[index]:
+            print("Fail")
+            return
+        else:
+            index -= 1
+    print("Pass")
+```
+
+```Python
+test_case_1 = [1, 2, 3, 4]
+test_function(test_case_1)
+```
+
+```Python 
+test_case_2 = [1]
+test_function(test_case_2)
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+def reverse_queue(queue):
+	stack = Stack()
+	while not queue.is_empty():
+		stack.push(queue.dequeue())
+
+	while not stack.is_empty():
+		queue.enqueue(stack.pop())
+
+```
+</p>
+</details>
+
+___
 
