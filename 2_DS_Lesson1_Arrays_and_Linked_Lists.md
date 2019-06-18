@@ -173,12 +173,36 @@ print ("Pass" if ('3432 :si edoc esuoh ehT' == string_reverser('The house code i
 <p>
 
 ```Python 
+# Solution
 
-# TODO
+def string_reverser(our_string):
+
+    """
+    Reverse the input string
+
+    Args:
+       our_string(string): String to be reversed
+    Returns:
+       string: The reversed string
+    """
+
+    # New empty string for us to build on
+    new_string = ""
+
+    # Iterate over old string
+    for i in range(len(our_string)):
+        # Grab the charecter from the back of the string and add them to the new string
+        new_string += our_string[(len(our_string)-1)-i]
+
+    # Return our solution
+    return new_string
 
 
+# Test Cases
 
-
+print ("Pass" if ('retaw' == string_reverser('water')) else "Fail")
+print ("Pass" if ('!noitalupinam gnirts gnicitcarP' == string_reverser('Practicing string manipulation!')) else "Fail")
+print ("Pass" if ('3432 :si edoc esuoh ehT' == string_reverser('The house code is: 2343')) else "Fail")
 ```
 </p>
 </details>
@@ -235,12 +259,35 @@ print ("Pass" if anagram_checker('Time and tide wait for no man','Notified madma
 <p>
 
 ```Python 
+# Solution
 
-# TODO
+def anagram_checker(str1, str2):
+
+    """
+    Check if the input strings are anagrams
+
+    Args:
+       str1(string),str2(string): Strings to be checked if they are anagrams
+    Returns:
+       bool: If strings are anagrams or not
+    """
+
+    if len(str1) != len(str2):
+        # Clean strings
+        clean_str_1 = str1.replace(" ", "").lower()
+        clean_str_2 = str2.replace(" ", "").lower()
+
+        if sorted(clean_str_1) == sorted(clean_str_2):
+            return True
+
+    return False
 
 
-
-
+print ("Pass" if not (anagram_checker('water','waiter')) else "Fail")
+print ("Pass" if anagram_checker('Dormitory','Dirty room') else "Fail")
+print ("Pass" if anagram_checker('Slot machines', 'Cash lost in me') else "Fail")
+print ("Pass" if not (anagram_checker('A gentleman','Elegant men')) else "Fail")
+print ("Pass" if anagram_checker('Time and tide wait for no man','Notified madman into water') else "Fail")
 ```
 </p>
 </details>
@@ -281,12 +328,29 @@ print ("Pass" if ('sihT si eno llams pets rof ...' == word_flipper('This is one 
 <p>
 
 ```Python 
+# Solution
 
-# TODO
+def word_flipper(our_string):
 
+    """
+    Flip the individual words in a sentence
 
+    Args:
+       our_string(string): Strings to have individual words flip
+    Returns:
+       string: String with words flipped
+    """
 
+    word_list = our_string.split(" ")
 
+    for idx in range(len(word_list)):
+        word_list[idx] = word_list[idx][::-1]
+
+    return " ".join(word_list)
+
+print ("Pass" if ('retaw' == word_flipper('water')) else "Fail")
+print ("Pass" if ('sihT si na elpmaxe' == word_flipper('This is an example')) else "Fail")
+print ("Pass" if ('sihT si eno llams pets rof ...' == word_flipper('This is one small step for ...')) else "Fail")
 ```
 </p>
 </details>
@@ -326,12 +390,37 @@ print ("Pass" if (2 == hamming_distance(('01011010100011101', '0101010100010001'
 <p>
 
 ```Python 
+# Solution
 
-# TODO
+def hamming_distance(str1, str2):
+
+    """
+    Calculate the hamming distance of the two strings
+
+    Args:
+       str1(string),str2(string): Strings to be used for finding the hamming distance
+    Returns:
+       int: Hamming Distance
+    """
+
+    if len(str1) == len(str2):
+        count = 0
+
+        for char in range(len(str1)):
+            if str1[char] != str2[char]:
+                count+=1
+
+        return count
+
+    return None
 
 
 
-
+print ("Pass" if (10 == hamming_distance('ACTTGACCGGG','GATCCGGTACA')) else "Fail")
+print ("Pass" if  (1 == hamming_distance('shove','stove')) else "Fail")
+print ("Pass" if  (None == hamming_distance('Slot machines', 'Cash lost in me')) else "Fail")
+print ("Pass" if  (9 == hamming_distance('A gentleman','Elegant men')) else "Fail")
+print ("Pass" if  (2 == hamming_distance('0101010100011101','0101010100010001')) else "Fail")
 ```
 </p>
 </details>
@@ -401,7 +490,256 @@ Practice implementing a basic linked list:
 
 Head
 
+* Create a `Node` class with `value` and `next` attributes 
+* Use the class to create the `head` node with the value `2`
+* Create and link a second node containing the value `1`
+* Try printing the values (`1` and `2`) on the nodes you created (to make sure that you can access them1)
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+head = Node(2)
+head.next = Node(1)
+
+print(head.value)
+print(head.next.value)
+```
+</p>
+</details>
 ___
+
+At this point, out linked list looks like this:
+
+2      -->  1  -->  None
+
+Head 
+
+Our goal is to extend the list unitl it looks like this:
+
+2     --> 1 --> 4 --> 3 --> 5 --> None 
+
+Head
+
+To do this, we need to create three more nodes, and we need to attach each one to the `next` attribute of the node that comes before it. Notiec that we don't nhave a direct reference to any of the nodes other than the `head` node!
+
+* Add three more nodes to the list, with values `4`, `3`, `5`
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+head.next.next = Node(4)
+head.next.next.next = Node(3)
+head.next.next.next.next = Node(5)
+```
+</p>
+</details>
+
+Let's print the values of all the nodes to check if it worked. If successully created (and linked) all the nodes, the following should print out `2`, `1`, `4`, `3`, `5`:
+
+```Python 
+print(head.value)
+print(head.next.value)
+print(head.next.next.value)
+print(head.next.next.next.value)
+print(head.next.next.next.next.value)
+```
+**Traversing the list**
+
+Successfully created a simple linked list. But printing all the values we did above was pretty tedious. What if we had a list with 1,000 nodes?
+
+Let's see how we might traverse the list and print all the values, no matter how long it might be. 
+
+**Walkthrough**
+
+
+
+___
+
+
+* Write a function that loops through the nodes of the list and prints all of the values
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+def print_linked_list(head):
+	current_node = head 
+
+	while current_node is not None:
+		print(current_node.value)
+		current_node = current_node.next
+
+print_linked_list(head)
+```
+</p>
+</details>
+
+___
+
+**Creating a linked list using iteration**
+
+Previously, we created a linked list using a very. manual and tedious method. We called `next` multiple times on our `head` node.
+
+Now that we know about iterating over or traversing the linked list, is there a way we can use that to create a linked list?
+
+We've provided our solution below—but it might be a good exercise to see what you can come up with first. Here's the goal:
+
+See if you can write the code for the `create_linked_list` function below
+The function should take a Python list of values as input and return the `head` of a linked list that has those values
+There's some test code, and also a solution, below—give it a try for yourself first, but don't hesitate to look over the solution if you get stuck
+
+```Python
+def create_linked_list(input_list):
+    """
+    Function to create a linked list
+    @param input_list: a list of integers
+    @return: head node of the linked list
+    """
+    head = None
+    return head
+```
+
+Test by running:
+
+```Python 
+### Test Code
+def test_function(input_list, head):
+    try:
+        if len(input_list) == 0:
+            if head is not None:
+                print("Fail")
+                return
+        for value in input_list:
+            if head.value != value:
+                print("Fail")
+                return
+            else:
+                head = head.next
+        print("Pass")
+    except Exception as e:
+        print("Fail: "  + e)
+        
+        
+
+input_list = [1, 2, 3, 4, 5, 6]
+head = create_linked_list(input_list)
+test_function(input_list, head)
+
+input_list = [1]
+head = create_linked_list(input_list)
+test_function(input_list, head)
+
+input_list = []
+head = create_linked_list(input_list)
+test_function(input_list, head)
+```
+
+Below is one possible solution. Walk through the code and make sure you understand what each part does.
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+def create_linked_list(input_list):
+    head = None
+    for value in input_list:
+        if head is None:
+            head = Node(value)    
+        else:
+        # Move to the tail (the last node)
+            current_node = head
+            while current_node.next:
+                current_node = current_node.next
+        
+            current_node.next = Node(value)
+    return head
+```
+</p>
+</details>
+
+___
+
+**A more efficient solution**
+
+THe above solution works, but it has some shortcomings. 
+
+A more efficient version:
+
+```Python 
+def create_linked_list_better(input_list):
+    head = None
+    # TODO: Implement the more efficient version that keeps track of the tail
+    return head
+```
+
+```Python
+### Test Code
+def test_function(input_list, head):
+    try:
+        if len(input_list) == 0:
+            if head is not None:
+                print("Fail")
+                return
+        for value in input_list:
+            if head.value != value:
+                print("Fail")
+                return
+            else:
+                head = head.next
+        print("Pass")
+    except Exception as e:
+        print("Fail: "  + e)
+        
+        
+
+input_list = [1, 2, 3, 4, 5, 6]
+head = create_linked_list_better(input_list)
+test_function(input_list, head)
+
+input_list = [1]
+head = create_linked_list_better(input_list)
+test_function(input_list, head)
+
+input_list = []
+head = create_linked_list_better(input_list)
+test_function(input_list, head)
+```
+Pass
+Pass
+Pass
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+def create_linked_list_better(input_list):
+    
+    head = None
+    tail = None
+    
+    for value in input_list:
+        
+        if head is None:
+            head = Node(value)
+            tail = head # when we only have 1 node, head and tail refer to the same node
+        else:
+            tail.next = Node(value) # attach the new node to the `next` of tail
+            tail = tail.next # update the tail
+            
+    return head
+```
+</p>
+</details>
+
+___
+
 
 **Key characteristics**
 
@@ -511,12 +849,34 @@ class LinkedList:
 <p>
 
 ```Python 
+# Solution
 
-# TODO
+class LinkedList:
+    def __init__(self):
+        self.head = None
 
+    def append(self, value):
+        if self.head is None:
+            self.head = Node(value)
+            return
 
+        # Move to the tail (the last node)
+        node = self.head
+        while node.next:
+            node = node.next
 
+        node.next = Node(value)
+        return
 
+    def to_list(self):
+        out_list = []
+
+        node = self.head
+        while node:
+            out_list.append(node.value)
+            node = node.next
+
+        return out_list
 ```
 </p>
 </details>
