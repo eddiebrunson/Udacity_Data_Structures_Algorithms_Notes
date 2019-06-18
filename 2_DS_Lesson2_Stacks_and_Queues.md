@@ -1523,4 +1523,710 @@ In a **Priority Queue**, you assign each element a numerical priority when you i
 
 If the elements have the same priority then the oldest element is the one that gets dequeued first. 
 
+### 11. Implement a queue using an array
+
+One way to implement a queue by using an array. 
+
+**Walkthrough**
+
+
+____
+
+
+<-------  0,              0,               ,0       <------
+
+Dequeue  Head                             Tail     Enqueue 
+        (Front)                          (Back)
+
+
+**Functionality**
+
+Once implemented, our queue will need to have the following functionality:
+
+1. `enqueue` - adds data to the back of the queue
+2. `dequeue` - removes data from the front of the queue
+3. `front` - returns the element at the front of the queue
+4. `size` - returns the number of elements present in the queue
+5. `is_empty` - returns True if there are no elements in the queue, and False otherwise
+6. `_handle_full_capacity` - increases the capacity of the array, for cases in which the queue would otherwise overflow
+
+Also, if the queue is empty, `dequeue` and `front` operations should return `None`.
+
+##### 1. Create the `queue` class and its `__init__` method
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+class Queue:
+
+    def __init__(self, initial_size=10):
+        self.arr = [0 for _ in range(initial_size)]
+        self.next_index = 0
+        self.front_index = -1
+        self.queue_size = 0
+```
+</p>
+</details>
+
+Let's check that the array is being initialized correctly. We can create a `Queue` object and access the `arr` attribute, and we should see our ten-element array:
+
+
+```Python
+q = Queue()
+print(q.arr)
+print("Pass" if q.arr == [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] else "Fail")
+```
+q = Queue()
+print(q.arr)
+print("Pass" if q.arr == [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] else "Fail")
+
+
+##### 2. Add the `enqueue` method
+
+The method should:
+
+* Take a value as input and assign this value to the next free slot in the array
+* Increment `queue_size`
+* Increment `next_index` (this is where you'll need to use the modulo operator `%`)
+* If the front index is `-1` (because the queue was empty), it should set the front index to `0`
+
+```Python 
+class Queue:
+
+    def __init__(self, initial_size=10):
+        self.arr = [0 for _ in range(initial_size)]
+        self.next_index = 0
+        self.front_index = -1
+        self.queue_size = 0
+
+    # TODO: Add the enqueue method
+```
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+class Queue:
+
+    def __init__(self, initial_size=10):
+        self.arr = [0 for _ in range(initial_size)]
+        self.next_index = 0
+        self.front_index = -1
+        self.queue_size = 0
+
+    def enqueue(self, value):
+        # enqueue new element
+        self.arr[self.next_index] = value
+        self.queue_size += 1
+        self.next_index = (self.next_index + 1) % len(self.arr)
+        if self.front_index == -1:
+            self.front_index = 0
+```
+</p>
+</details>
+
+___
+
+##### 3. Add the `size`, `is_empty` and `front` methods
+
+Just like with stacks, we need methods to keep track of the size of the queue and whether it is empty. We can also add a `front` method that returns the value of the front element.
+
+* Add a `size method` that returns the current size of the queue
+* Add an `is_empty` method that returns `True` if the queue is empty and `False` otherwise
+* Add a `front` method that returns the value for the front element (whatever item is located at the `front_index` position). If the queue is empty, the `front` method should return None.
+
+```Python
+class Queue:
+
+    def __init__(self, initial_size=10):
+        self.arr = [0 for _ in range(initial_size)]
+        self.next_index = 0
+        self.front_index = -1
+        self.queue_size = 0
+
+    def enqueue(self, value):
+        # enqueue new element
+        self.arr[self.next_index] = value
+        self.queue_size += 1
+        self.next_index = (self.next_index + 1) % len(self.arr)
+        if self.front_index == -1:
+            self.front_index = 0
+            
+    # TODO: Add the size method
+    
+    # TODO: Add the is_empty method
+
+    # TODO: Add the front method
+```
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+class Queue:
+
+    def __init__(self, initial_size=10):
+        self.arr = [0 for _ in range(initial_size)]
+        self.next_index = 0
+        self.front_index = -1
+        self.queue_size = 0
+
+    def enqueue(self, value):
+        # enqueue new element
+        self.arr[self.next_index] = value
+        self.queue_size += 1
+        self.next_index = (self.next_index + 1) % len(self.arr)
+        if self.front_index == -1:
+            self.front_index = 0
+
+    def size(self):
+        return self.queue_size
+
+    def is_empty(self):
+        return self.size() == 0
+    
+    def front(self):
+        # check if queue is empty
+        if self.is_empty():
+            return None
+        return self.arr[self.front_index]
+```
+</p>
+</details>
+
+___
+
+##### 4. Add the `dequeue` method
+
+Here's what it should do:
+
+* If the queue is empty, reset the `front_index` and `next_index` and then simply return `None`. Otherwise...
+* Get the value from the front of the queue and store this in a local variable (to return later)
+* Shift the `head` over so that it refers to the next index
+* Update the `queue_size` attribute
+* Return the value that was dequeued
+
+```Python
+class Queue:
+
+    def __init__(self, initial_size=10):
+        self.arr = [0 for _ in range(initial_size)]
+        self.next_index = 0
+        self.front_index = -1
+        self.queue_size = 0
+
+    def enqueue(self, value):
+        # enqueue new element
+        self.arr[self.next_index] = value
+        self.queue_size += 1
+        self.next_index = (self.next_index + 1) % len(self.arr)
+        if self.front_index == -1:
+            self.front_index = 0
+            
+    # TODO: Add the dequeue method
+
+    def size(self):
+        return self.queue_size
+
+    def is_empty(self):
+        return self.size() == 0
+    
+    def front(self):
+        # check if queue is empty
+        if self.is_empty():
+            return None
+        return self.arr[self.front_index]
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+class Queue:
+
+    def __init__(self, initial_size=10):
+        self.arr = [0 for _ in range(initial_size)]
+        self.next_index = 0
+        self.front_index = -1
+        self.queue_size = 0
+
+    def enqueue(self, value):
+        # enqueue new element
+        self.arr[self.next_index] = value
+        self.queue_size += 1
+        self.next_index = (self.next_index + 1) % len(self.arr)
+        if self.front_index == -1:
+            self.front_index = 0
+            
+    def dequeue(self):
+        # check if queue is empty
+        if self.is_empty():
+            self.front_index = -1   # resetting pointers
+            self.next_index = 0
+            return None
+
+        # dequeue front element
+        value = self.arr[self.front_index]
+        self.front_index = (self.front_index + 1) % len(self.arr)
+        self.queue_size -= 1
+        return value
+
+    def size(self):
+        return self.queue_size
+
+    def is_empty(self):
+        return self.size() == 0
+    
+    def front(self):
+        # check if queue is empty
+        if self.is_empty():
+            return None
+        return self.arr[self.front_index]
+```
+</p>
+</details>
+
+___
+
+##### 5. Add the `_handle_queue_capacity_full` method
+
+First, define the `_handle_queue_capacity_full` method:
+
+* Define an `old_arr` variable and assign the the current (full) array so that we have a copy of it
+* Create a new (larger) array and assign it to `arr`.
+* Iterate over the values in the old array and copy them to the new array. Remember that you'll need two for loops for this.
+
+Then, in the `enqueue` method:
+
+* Add a conditional to check if the queue is full; if it is, call  `_handle_queue_capacity_full`
+
+```Python 
+class Queue:
+
+    def __init__(self, initial_size=10):
+        self.arr = [0 for _ in range(initial_size)]
+        self.next_index = 0
+        self.front_index = -1
+        self.queue_size = 0
+
+    def enqueue(self, value):
+        # TODO: Check if the queue is full; if it is, call the _handle_queue_capacity_full method
+
+        # enqueue new element
+        self.arr[self.next_index] = value
+        self.queue_size += 1
+        self.next_index = (self.next_index + 1) % len(self.arr)
+        if self.front_index == -1:
+            self.front_index = 0
+
+    def dequeue(self):
+        # check if queue is empty
+        if self.is_empty():
+            self.front_index = -1   # resetting pointers
+            self.next_index = 0
+            return None
+
+        # dequeue front element
+        value = self.arr[self.front_index]
+        self.front_index = (self.front_index + 1) % len(self.arr)
+        self.queue_size -= 1
+        return value
+
+    def size(self):
+        return self.queue_size
+
+    def is_empty(self):
+        return self.size() == 0
+    
+    def front(self):
+        # check if queue is empty
+        if self.is_empty():
+            return None
+        return self.arr[self.front_index]
+
+    # TODO: Add the _handle_queue_capacity_full method
+```
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+class Queue:
+
+    def __init__(self, initial_size=10):
+        self.arr = [0 for _ in range(initial_size)]
+        self.next_index = 0
+        self.front_index = -1
+        self.queue_size = 0
+
+    def enqueue(self, value):
+        # if queue is already full --> increase capacity
+        if self.queue_size == len(self.arr):
+            self._handle_queue_capacity_full()
+
+        # enqueue new element
+        self.arr[self.next_index] = value
+        self.queue_size += 1
+        self.next_index = (self.next_index + 1) % len(self.arr)
+        if self.front_index == -1:
+            self.front_index = 0
+
+    def dequeue(self):
+        # check if queue is empty
+        if self.is_empty():
+            self.front_index = -1   # resetting pointers
+            self.next_index = 0
+            return None
+
+        # dequeue front element
+        value = self.arr[self.front_index]
+        self.front_index = (self.front_index + 1) % len(self.arr)
+        self.queue_size -= 1
+        return value
+
+    def size(self):
+        return self.queue_size
+
+    def is_empty(self):
+        return self.size() == 0
+    
+    def front(self):
+        # check if queue is empty
+        if self.is_empty():
+            return None
+        return self.arr[self.front_index]
+
+    def _handle_queue_capacity_full(self):
+        old_arr = self.arr
+        self.arr = [0 for _ in range(2 * len(old_arr))]
+
+        index = 0
+
+        # copy all elements from front of queue (front-index) until end
+        for i in range(self.front_index, len(old_arr)):
+            self.arr[index] = old_arr[i]
+            index += 1
+
+        # case: when front-index is ahead of next index
+        for i in range(0, self.front_index):
+            self.arr[index] = old_arr[i]
+            index += 1
+
+        # reset pointers
+        self.front_index = 0
+        self.next_index = index
+```
+</p>
+</details>
+
+___
+
+**Test your queue**
+
+```Python 
+# Setup
+q = Queue()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+
+# Test size
+print ("Pass" if (q.size() == 3) else "Fail")
+
+# Test dequeue
+print ("Pass" if (q.dequeue() == 1) else "Fail")
+
+# Test enqueue
+q.enqueue(4)
+print ("Pass" if (q.dequeue() == 2) else "Fail")
+print ("Pass" if (q.dequeue() == 3) else "Fail")
+print ("Pass" if (q.dequeue() == 4) else "Fail")
+q.enqueue(5)
+print ("Pass" if (q.size() == 1) else "Fail")
+```
+Pass
+Pass
+Pass
+Pass
+Pass
+Pass
+
+___
+
+### 12. Build a queue using a linked list
+
+By now, you may be noticing a pattern. Earlier, we had you implement a stack using an array and a linked list. Here, we're doing the same thing with queues: In the previous notebook, you implemented a queue using an array, and in this notebook we'll implement one using a linked list.
+
+It's good to try implementing the same data structures in multiple ways. This helps you to better understand the abstract concepts behind the data structure, separate from the details of their implementation—and it also helps you develop a habit of comparing pros and cons of different implementations.
+
+With both stack and queues, we saw that trying to use arrays introduced some concerns regarding the time complexity, particularly when the initial array size isn't large enough and we need to expand the array in order to add more items.
+
+With our stack implementation, we saw that linked lists provided a way around this issue—and exactly the same thing is true with queues.
+
+##### 1. Define a `Node` class 
+
+Since we'll be implementing a linked list for this, we know that we'll need a `Node` class like we used earlier in this lesson. 
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+class Node:
+    
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+```
+</p>
+</details>
+
+___
+
+##### 2. Create the `Queue` class and it's `__init__` method
+
+It will need three attributes:
+
+* A `head` attribute to keep track of the first node in the linked list
+* A `tail` attribute to keep track of the last node in the linked list
+* A `num_elements` attribute to keep track of how many items are in the stack
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+class Queue:
+    
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.num_elements = 0
+```
+</p>
+</details>
+
+___
+
+##### 3. Add the `enqueue` method 
+
+In the cell below, see if you can figure out how to write the `enqueue` method.
+
+Remember, the purpose of this method is to add a new item to the back of the queue. Since we're using a linked list, this is equivalent to creating a new node and adding it to the tail of the list.
+
+Some things to keep in mind:
+
+* If the queue is empty, then both the `head` and `tail` should refer to the new node (because when there's only one node, this node is both the head and the tail)
+* Otherwise (if the queue has items), add the new node to the tail (i.e., to the end of the queue)
+* Be sure to shift the `tail` reference so that it refers to the new node (because it is the new tail)
+
+```Python
+class Queue:
+    
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.num_elements = 0
+        
+    # TODO: Add the enqueue method
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+class Queue:
+    
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.num_elements = 0
+        
+    def enqueue(self, value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = self.head
+        else:
+            self.tail.next = new_node    # add data to the next attribute of the tail (i.e. the end of the queue)
+            self.tail = self.tail.next   # shift the tail (i.e., the back of the queue)
+        self.num_elements += 1
+```
+</p>
+</details>
+
+___
+
+##### 4. Add the `size` and `is_empty` methods
+
+* Add a `size` method that returns the current size of the stack
+* Add an `is_empty` method that returns `True` if the stack is empty and `False` otherwise
+
+We'll make use of these methods in a moment when we write the `dequeue` method.
+
+```Python
+class Queue:
+    
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.num_elements = 0
+        
+    def enqueue(self, value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = self.head
+        else:
+            self.tail.next = new_node    # add data to the next attribute of the tail (i.e. the end of the queue)
+            self.tail = self.tail.next   # shift the tail (i.e., the back of the queue)
+        self.num_elements += 1
+    
+    # TODO: Add the size method
+    
+    # TODO: Add the is_empty method
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+class Queue:
+    
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.num_elements = 0
+        
+    def enqueue(self, value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = self.head
+        else:
+            self.tail.next = new_node    # add data to the next attribute of the tail (i.e. the end of the queue)
+            self.tail = self.tail.next   # shift the tail (i.e., the back of the queue)
+        self.num_elements += 1
+    
+    def size(self):
+        return self.num_elements
+    
+    def is_empty(self):
+        return self.num_elements == 0
+```
+</p>
+</details>
+
+___
+
+##### 5. Add the `dequeue` method
+
+* If the queue is empty, it should simply return `None`. Otherwise...
+* Get the value from the front of the queue (i.e., the head of the linked list)
+* Shift the `head` over so that it refers to the next node
+* Update the `num_elements` attribute
+* Return the value that was dequeued
+
+```Python
+class Queue:
+    
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.num_elements = 0
+        
+    def enqueue(self, value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = self.head
+        else:
+            self.tail.next = new_node    # add data to the next attribute of the tail (i.e. the end of the queue)
+            self.tail = self.tail.next   # shift the tail (i.e., the back of the queue)
+        self.num_elements += 1
+            
+    # Add the dequeue method
+    
+    def size(self):
+        return self.num_elements
+    
+    def is_empty(self):
+        return self.num_elements == 0
+        
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+class Queue:
+    
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.num_elements = 0
+        
+    def enqueue(self, value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = self.head
+        else:
+            self.tail.next = new_node    # add data to the next attribute of the tail (i.e. the end of the queue)
+            self.tail = self.tail.next   # shift the tail (i.e., the back of the queue)
+        self.num_elements += 1
+            
+    def dequeue(self):
+        if self.is_empty():
+            return None
+        value = self.head.value          # copy the value to a local variable
+        self.head = self.head.next       # shift the head (i.e., the front of the queue)
+        self.num_elements -= 1
+        return value
+    
+    def size(self):
+        return self.num_elements
+    
+    def is_empty(self):
+        return self.num_elements == 0
+```
+</p>
+</details>
+
+___
+
+**Test it!**
+
+Code to check if the implementation works:
+
+```Python
+
+# Setup
+q = Queue()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+
+# Test size
+print ("Pass" if (q.size() == 3) else "Fail")
+
+# Test dequeue
+print ("Pass" if (q.dequeue() == 1) else "Fail")
+
+# Test enqueue
+q.enqueue(4)
+print ("Pass" if (q.dequeue() == 2) else "Fail")
+print ("Pass" if (q.dequeue() == 3) else "Fail")
+print ("Pass" if (q.dequeue() == 4) else "Fail")
+q.enqueue(5)
+print ("Pass" if (q.size() == 1) else "Fail")
+```
+
+**Time Complexity**
+
+So what's the time complexity of adding or removing things from our queue here?
+
+Well, when we use `enqueue`, we simply create a new node and add it to the tail of the list. And when we `dequeue` an item, we simply get the value from the head of the list and then shift the `head` variable so that it refers to the next node over.
+
+Both of these operations happen in constant time—that is, they have a *time-complexity* of **O(1)**.
+
+
+
+
 
