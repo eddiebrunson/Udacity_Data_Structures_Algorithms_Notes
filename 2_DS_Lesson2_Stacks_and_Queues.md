@@ -63,7 +63,7 @@ The goal is to implement a `Stack` class that has the following behaviors:
 4. `top` - returns the value of the item at the top of the stack (without removing that item)
 5. `is_empty` - returns `True` if the stack is empty and `False` otherwise
 
-### 1. Create and initialize the `Stack` class
+##### 1. Create and initialize the `Stack` class
 
 ```Python
 class Stack:
@@ -104,7 +104,7 @@ class Stack:
 
 ___
 
-### 2. Add the `push` method
+##### 2. Add the `push` method
 
 Next, we define our `push` method, so that we have a way of adding elements to the top of the stack.
 
@@ -158,7 +158,7 @@ class Stack:
 ___
 
 
-### 3. Handle full capacity 
+##### 3. Handle full capacity 
 
 If you keep pushing items onto the stack, eventually you will run out of room in the array. Currently, that will cause an `Index out of range` error. In order to avoid a stack overflow, we need to check the capacity of the array before pushing an item to the stack. And if the array is full, we need to increase the array size before pushing the new element. 
 
@@ -250,7 +250,7 @@ class Stack:
 
 ___
 
-### 4. Add the `size` and `is_empty` methods
+##### 4. Add the `size` and `is_empty` methods
 
 Next, we need to add a couple of simple methods:
 
@@ -345,7 +345,7 @@ class Stack:
 
 ___
 
-### 5. Add the `pop` method
+##### 5. Add the `pop` method
 
 The last thing we need to do is add the `pop` method.
 
@@ -449,3 +449,72 @@ class Stack:
 
 </p>
 </details>
+
+___
+
+### 4. Implement a Stack Using a Linked List
+
+Implementing a stack using an array works, but introduces concerns with time complexity. For example, if we exceed the capacity of the array, we have to go through the laborious process of creating a new array and moving over all the elements from the old array. 
+
+What if we instead implement the stack using a linked list? Can this improve our time complexity? Let's give it a try.
+
+##### 1. Define a `Node` class 
+
+Since we'll be implementing a linked list for this, we know that we'll need a `Node` class like we used earlier. 
+
+> Note: Practice implementing this from memory as each concept builds upon one another. So try to remember, then check the solution, then hide the solution and try to remember again! 
+
+```Python 
+# Add the Node class here from memory 
+
+```
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+
+```
+
+</p>
+</details>
+
+___
+
+2. Create the `Stack` Class and its `__init__` method
+
+In the below, see if you can write the `__init__` method for our `Stack` class. It will need two attributes:
+
+* A `head` attribute to keep track of the first node in the linked list
+* A `num_elements` attribute to keep track of how many items are in the stack
+
+```Python 
+class Stack:
+    
+    # TODO: Add the __init__ method
+
+```
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python
+
+```
+
+</p>
+</details>
+
+___
+
+##### 3. Add the `push` method 
+
+Next, we need to define our `push` method, so that we have a way of adding elements to the top of the stack. 
+
+**Walkthrough**
+
+
+___
+
+
+Now give it a try yourself. Add the `push` method.
+
+* 
