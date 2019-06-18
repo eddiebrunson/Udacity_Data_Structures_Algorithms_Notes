@@ -472,7 +472,10 @@ Since we'll be implementing a linked list for this, we know that we'll need a `N
 <p>
 
 ```Python
-
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
 ```
 
 </p>
@@ -480,7 +483,7 @@ Since we'll be implementing a linked list for this, we know that we'll need a `N
 
 ___
 
-2. Create the `Stack` Class and its `__init__` method
+##### 2. Create the `Stack` Class and its `__init__` method
 
 In the below, see if you can write the `__init__` method for our `Stack` class. It will need two attributes:
 
@@ -497,7 +500,11 @@ class Stack:
 <p>
 
 ```Python
-
+class Stack:
+    
+    def __init__(self):
+        self.head = None # No items in the stack, so head should be None
+        self.num_elements = 0 # No items in the stack, so num_elements should be 0
 ```
 
 </p>
@@ -511,10 +518,285 @@ Next, we need to define our `push` method, so that we have a way of adding eleme
 
 **Walkthrough**
 
+First we take a look at the first method, we take the value that we are passing in to create a new node.
 
+```Python 
+def push (self, value):
+	new_node = Node(value)
+```
+
+
+But, first we need to check if there are any new nodes. 
+
+If the value of the head is None, then we know that we haven't added anything yet and that the stack is empty. 
+```Python 
+# if stsack is empty
+
+if self. head is None:
+	self.head = new_node
+``` 
+Then the question is where do we attach this node? In a stack we can only add to the top, but which end of the list should be the top, the tail or the head?
+
+First, 
+
+```Python
+else: 
+	current_node = head 
+	while current_node.next:
+		current_node = current_node.next
+	current_node.next = new_node
+```
+Start at the head of the list, then we iterate over the of the nodes. We use the while loop to traverse the list until we find the end of the list. Wherever a node points to None, rather than next element. We attach that element to new node. This approach will work but it isn't very efficient! 
+
+Because, everytime we want to pop or push an item we have to traverse the whole linked lists to get to the top of the stack. By defining the tail as the top of the stack, we are using the head as the entry point and we have the issue where we have to traverse the to reach the top of the stack. 
+
+So we flip that around and want to define the head as the top of the stack.
+
+```Python 
+else:
+	new_node.next = self.head 
+	self.head = new_node
+self.num_elements += 1
+```
+
+So we are attaching the new node in front of the head and making it the new head of list. 
+
+Now we need to keep track of where the top of the stack is, by updating what head refers to. 
 ___
 
 
 Now give it a try yourself. Add the `push` method.
 
-* 
+* The method will need to have a parameter for the `value` that you want to push 
+* You'll then need to create a new `Node` object with this value and link it to the list
+* Rememebr that we want to add new items at the head of the stack, not the tail!
+* Once the new node is added, you increment `num_elements`
+
+
+```Python 
+class Stack:
+    
+    def __init__(self):
+        self.head = None
+        self.num_elements = 0
+        
+    # TODO: Add the push method
+        
+```
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+class Stack:
+    
+    def __init__(self):
+        self.head = None
+        self.num_elements = 0
+        
+    def push(self, value):
+        new_node = Node(value)        
+        # if stack is empty
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.next = self.head    # place the new node at the head of the linked list (top)
+            self.head = new_node
+
+        self.num_elements += 1
+```
+</p>
+</details>
+
+___
+
+##### 4. Add the `size` and `is_empty` methods
+
+When we implemented a stack using an array, we had these same methods. They will work the same here--they aren't affected by the use of a linked list versus an array. 
+
+* Add a `size` method that returns the current size of the stack 
+* Add an `is_empty` method that returns `True` if the stack is empty and `False` otherwise. 
+
+```Python 
+class Stack:
+    
+    def __init__(self):
+        self.head = None
+        self.num_elements = 0
+        
+    def push(self, value):
+        new_node = Node(value)
+        # if stack is empty
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.next = self.head # place the new node at the head (top) of the linked list
+            self.head = new_node
+
+        self.num_elements += 1
+        
+    # TODO: Add the size method
+    
+    # TODO: Add the is_empty method
+```
+ <details><summary><b>Solution</b></summary>
+<p>
+
+
+```Python
+class Stack:
+    
+    def __init__(self):
+        self.head = None
+        self.num_elements = 0
+        
+    def push(self, value):
+        new_node = Node(value)
+        # if stack is empty
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.next = self.head # place the new node at the head (top) of the linked list
+            self.head = new_node
+
+        self.num_elements += 1
+    
+    def size(self):
+        return self.num_elements
+    
+    def is_empty(self):
+        return self.num_elements == 0
+```
+</p>
+</details>
+
+___
+
+##### 5. Add the `pop` method
+
+THe last thing we want to do is add the `pop` method. 
+
+**Walkthrough**
+
+
+___
+
+
+THe method needs to:
+
+* Check if the stack is empty and , if it is, return `None`
+* Get the value from the `head` node and put it in a local variable
+* Move the `head` so that it refers to the next item in the list
+* Return the value we got earlier 
+
+```Python 
+class Stack:
+    
+    def __init__(self):
+        self.head = None
+        self.num_elements = 0
+        
+    def push(self, value):
+        new_node = Node(value)
+        # if stack is empty
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.next = self.head # place the new node at the head (top) of the linked list
+            self.head = new_node
+
+        self.num_elements += 1
+        
+    # TODO: Add the pop method
+    
+    def size(self):
+        return self.num_elements
+    
+    def is_empty(self):
+        return self.num_elements == 0
+```
+<details><summary><b>Solution</b></summary>
+<p>
+
+
+```Python
+class Stack:
+    
+    def __init__(self):
+        self.head = None
+        self.num_elements = 0
+        
+    def push(self, value):
+        new_node = Node(value)
+        # if stack is empty
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.next = self.head # place the new node at the head (top) of the linked list
+            self.head = new_node
+
+        self.num_elements += 1
+        
+    def pop(self):
+        if self.is_empty():
+            return
+        
+        value = self.head.value # copy data to a local variable
+        self.head = self.head.next # move head pointer to point to next node (top is removed by doing so)
+        self.num_elements -= 1
+        return value
+    
+    def size(self):
+        return self.num_elements
+    
+    def is_empty(self):
+        return self.num_elements == 0
+```
+</p>
+</details>
+
+___
+
+**Test it!** 
+
+Now that the `Stack` class is completed, let's test it to make sure it all works as expected. 
+
+```Python 
+# Setup
+stack = Stack()
+stack.push(10)
+stack.push(20)
+stack.push(30)
+stack.push(40)
+stack.push(50)
+
+# Test size
+print ("Pass" if (stack.size() == 5) else "Fail")
+
+# Test pop
+print ("Pass" if (stack.pop() == 50) else "Fail")
+
+# Test push
+stack.push(60)
+print ("Pass" if (stack.pop() == 60) else "Fail")
+print ("Pass" if (stack.pop() == 40) else "Fail")
+print ("Pass" if (stack.pop() == 30) else "Fail")
+stack.push(50)
+print ("Pass" if (stack.size() == 3) else "Fail")
+```
+
+Pass 
+Pass
+Pass 
+Pass 
+Pass 
+Pass
+
+**Time complexity of stacks using linked lists**
+
+___
+
+Notice that if we pop or push an element with this stack, there's no traveral. We simply add or remove the item from the head of the linked list, and update the `head` reference. So with out linked list implementation, `pop` and `push` have time complexity of O(1). 
+
+Also notice that using a linked list avoids the issue we ran into when we implemented our stack using an array. In that case, adding an item to the stack was fine--until we ran out of space. Then we would have to create an entirely new (larger) array and copy over all of the references from the old array. 
+
+That happened because, with an array, we had to specify some inital size (in other words, we had to set aside a contiguous block of memory in advance). But with a linked list, the nodes do not need to be contiguous. They can be scattered in different locations of memory, an d that works just fine. This means that with a linked list, we can simply append as many nodes as we like. Using that as the underlying data structure for our stack means that we never run out of capacity, so pushing and popping items will always have a *time complexity* of **O(1)**
