@@ -1467,7 +1467,7 @@ def duplicate_number(arr):
 	pass
 ```
 
-details><summary><b>Solution</b></summary>
+<details><summary><b>Solution</b></summary>
 <p>
 
 ```Python 
@@ -1564,6 +1564,9 @@ def max_sum_subarray(arr):
     pass
 ```
 
+<details><summary><b>Solution</b></summary>
+<p>
+
 ```Python 
 # Solution
 
@@ -1642,6 +1645,8 @@ def nth_row_pascal(n):
     """
 ```
 
+<details><summary><b>Solution</b></summary>
+<p>
 
 ```Python 
 # Solution
@@ -1753,6 +1758,9 @@ def even_after_odd(head)
 
    pass
 ```
+<details><summary><b>Solution</b></summary>
+<p>
+
 ```Python 
 # Solution
 def even_after_odd(head):
@@ -1904,6 +1912,8 @@ def skip_i_delete_j(head, i, j):
     """
     pass
 ```
+<details><summary><b>Solution</b></summary>
+<p>
 
 ```Python 
 # Solution
@@ -2055,7 +2065,9 @@ def swap_nodes(head, left_index, right_index):
     """
     pass
 ```
-
+<details><summary><b>Solution</b></summary>
+<p>
+	
 ```Python 
 # Solution
 
