@@ -800,3 +800,428 @@ Notice that if we pop or push an element with this stack, there's no traveral. W
 Also notice that using a linked list avoids the issue we ran into when we implemented our stack using an array. In that case, adding an item to the stack was fine--until we ran out of space. Then we would have to create an entirely new (larger) array and copy over all of the references from the old array. 
 
 That happened because, with an array, we had to specify some inital size (in other words, we had to set aside a contiguous block of memory in advance). But with a linked list, the nodes do not need to be contiguous. They can be scattered in different locations of memory, an d that works just fine. This means that with a linked list, we can simply append as many nodes as we like. Using that as the underlying data structure for our stack means that we never run out of capacity, so pushing and popping items will always have a *time complexity* of **O(1)**
+
+___
+
+### 5. Build a Stack
+
+**Building a Stack in Python**
+
+Before we start let us reiterate they key components of a stack. A stack is a data structure that consists of two main operations: push and pop. A push is when you add an element to the **top of the stack** and a pop is when you remove an element from the **top of the stack**. Python 3.x conviently allows us to demonstate this functionality with a list. When you have a list such as [2,4,5,6] you can decide which end of the list is the bottom and the top of the stack respectivley. Once you decide that, you can use the append, pop or insert function to simulate a stack. We will choose the first element to be the bottom of our stack and therefore be using the append and pop functions to simulate it. Give it a try by implementing the function below!
+
+```Python 
+class Stack:
+    def __init__(self):
+         # TODO: Initialize the Stack
+    
+    def size(self):
+         # TODO: Check the size of the Stack
+    
+    def push(self, item):
+         # TODO: Push item onto Stack
+
+    def pop(self):
+         # TODO: Pop item off of the Stack
+```
+Test the Stack
+
+```Python
+MyStack = Stack()
+
+MyStack.push("Web Page 1")
+MyStack.push("Web Page 2")
+MyStack.push("Web Page 3")
+
+print (MyStack.items)
+
+MyStack.pop()
+MyStack.pop()
+
+print ("Pass" if (MyStack.items[0] == 'Web Page 1') else "Fail")
+
+MyStack.pop()
+
+print ("Pass" if (MyStack.pop() == None) else "Fail") 
+```
+
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-1-161b6dd35e6f> in <module>()
+----> 1 MyStack = Stack()
+      2 
+      3 MyStack.push("Web Page 1")
+      4 MyStack.push("Web Page 2")
+      5 MyStack.push("Web Page 3")
+
+NameError: name 'Stack' is not defined
+
+___
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+
+```Python
+# Solution
+
+class Stack:
+    def __init__(self):
+        self.items = []
+    
+    def size(self):
+        return len(self.items)
+    
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if self.size()==0:
+            return None
+        else:
+            return self.items.pop()
+        
+MyStack = Stack()
+
+MyStack.push("Web Page 1")
+MyStack.push("Web Page 2")
+MyStack.push("Web Page 3")
+
+print (MyStack.items)
+
+MyStack.pop()
+MyStack.pop()
+
+print ("Pass" if (MyStack.items[0] == 'Web Page 1') else "Fail")
+
+MyStack.pop()
+
+print ("Pass" if (MyStack.pop() == None) else "Fail")# Solution
+
+class Stack:
+    def __init__(self):
+        self.items = []
+    
+    def size(self):
+        return len(self.items)
+    
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if self.size()==0:
+            return None
+        else:
+            return self.items.pop()
+        
+MyStack = Stack()
+
+MyStack.push("Web Page 1")
+MyStack.push("Web Page 2")
+MyStack.push("Web Page 3")
+
+print (MyStack.items)
+
+MyStack.pop()
+MyStack.pop()
+
+print ("Pass" if (MyStack.items[0] == 'Web Page 1') else "Fail")
+
+MyStack.pop()
+
+print ("Pass" if (MyStack.pop() == None) else "Fail")# Solution
+
+class Stack:
+    def __init__(self):
+        self.items = []
+    
+    def size(self):
+        return len(self.items)
+    
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if self.size()==0:
+            return None
+        else:
+            return self.items.pop()
+        
+MyStack = Stack()
+
+MyStack.push("Web Page 1")
+MyStack.push("Web Page 2")
+MyStack.push("Web Page 3")
+
+print (MyStack.items)
+
+MyStack.pop()
+MyStack.pop()
+
+print ("Pass" if (MyStack.items[0] == 'Web Page 1') else "Fail")
+
+MyStack.pop()
+
+print ("Pass" if (MyStack.pop() == None) else "Fail")
+```
+</p>
+</details>
+
+___
+
+### 6. Practice: Balanced Parentheses 
+
+Exercise:
+
+In this exercise you are going to apply what you learned about stacks with a real world problem. We will be using stacks to make sure the parentheses are balanced in mathematical expressions such as:  `((32+8)∗(5/2))/(2+6)`.  In real life you can see this extend to many things such as text editor plugins and interactive development environments for all sorts of bracket completion checks.
+
+Take a string as an input and return True if it's parentheses are balanced or `False` if it is not.
+
+Try to code up a solution and pass the test cases.
+
+**Code**
+
+```Python
+# Our Stack Class - Brought from previous concept
+# No need to modify this
+class Stack:
+    def __init__(self):
+        self.items = []
+    
+    def size(self):
+        return len(self.items)
+    
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if self.size()==0:
+            return None
+        else:
+            return self.items.pop()
+
+def equation_checker(equation):
+    """
+    Check equation for balanced parentheses
+
+    Args:
+       equation(string): String form of equation
+    Returns:
+       bool: Return if parentheses are balanced or not
+    """
+    
+    
+    # TODO: Intiate stack object
+    
+    # TODO: Interate through equation checking parentheses
+    
+    # TODO: Return True if balanced and False if not
+    
+    pass
+```
+
+**Test Cases**
+
+```Python 
+print ("Pass" if (equation_checker('((3^2 + 8)*(5/2))/(2+6)')) else "Fail")
+print ("Pass" if not (equation_checker('((3^2 + 8)*(5/2))/(2+6))')) else "Fail")
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+
+```Python
+# Solution
+
+# Our Stack Class
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def size(self):
+        return len(self.items)
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if self.size()==0:
+            return None
+        else:
+            return self.items.pop()
+
+
+def equation_checker(equation):
+    """
+    Check equation for balanced parentheses
+
+    Args:
+       equation(string): String form of equation
+    Returns:
+       bool: Return if parentheses are balanced or not
+    """
+    
+    stack = Stack()
+
+    for char in equation:
+        if char == "(":
+            stack.push(char)
+        elif char == ")":
+            if stack.pop() == None:
+                return False
+
+    if stack.size() == 0:
+        return True
+    else:
+        return False
+
+
+print ("Pass" if (equation_checker('((3^2 + 8)*(5/2))/(2+6)')) else "Fail")
+print ("Pass" if not (equation_checker('((3^2 + 8)*(5/2))/(2+6))')) else "Fail")
+```
+</p>
+</details>
+
+___
+
+### 7. Reverse Polish Notation 
+
+**Reverse Polish notation**, also referred to as **Polish postfix notation** is a way of laying out operators and operands.
+
+When making mathematical expressions, we typically put arithmetic operators (like `+`, `-`, `*`, and `/`) between operands. For example: `5 + 7 - 3 * 8`
+
+However, in Reverse Polish Notation, the operators come after the operands. For example: `3 1 + 4 *`
+
+The above expression would be evaluated as `(3 + 1) * 4 = 16`
+
+The goal of this exercise is to create a function that does the following:
+
+Given a postfix expression as input, evaluate and return the correct final answer.
+
+>**Note:** In Python 3, the division operator / is used to perform float division. So for this problem, you should use int() after every division to convert the answer to an integer.
+
+```Python 
+class LinkedListNode:
+
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Stack:
+
+    def __init__(self):
+        self.num_elements = 0
+        self.head = None
+
+    def push(self, data):
+        new_node = LinkedListNode(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.num_elements += 1
+
+    def pop(self):
+        if self.is_empty():
+            return None
+        temp = self.head.data
+        self.head = self.head.next
+        self.num_elements -= 1
+        return temp
+
+    def top(self):
+        if self.head is None:
+            return None
+        return self.head.data
+
+    def size(self):
+        return self.num_elements
+
+    def is_empty(self):
+        return self.num_elements == 0
+```
+
+```Python
+def evaluate_post_fix(input_list):
+    """
+    Evaluate the postfix expression to find the answer
+
+    Args:
+       input_list(list): List containing the postfix expression
+    Returns:
+       int: Postfix expression solution
+    """
+    # TODO: Iterate over elements 
+    
+    # TODO: Use stacks to control the element positions
+    
+    pass
+```
+
+```Python
+ def test_function(test_case):
+    output = evaluate_post_fix(test_case[0])
+    print(output)
+    if output == test_case[1]:
+        print("Pass")
+    else:
+        print("Fail")
+```
+
+```Python
+ test_case_1 = [["3", "1", "+", "4", "*"], 16]
+
+test_function(test_case_1)
+```
+
+```Python
+ test_case_2 = [["4", "13", "5", "/", "+"], 6]
+test_function(test_case_2)
+```
+
+```Python
+ test_case_3 = [["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"], 22]
+test_function(test_case_3)
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+
+```Python
+def evaluate_post_fix(input_list):
+    stack = Stack()
+    for element in input_list:
+        if element == '*':
+            second = stack.pop()
+            first = stack.pop()
+            output = first * second
+            stack.push(output)
+        elif element == '/':
+            second = stack.pop()
+            first = stack.pop()
+            output = int(first / second)
+            stack.push(output)
+        elif element == '+':
+            second = stack.pop()
+            first = stack.pop()
+            output = first + second
+            stack.push(output)
+        elif element == '-':
+            second = stack.pop()
+            first = stack.pop()
+            output = first - second
+            stack.push(output)
+        else:
+            stack.push(int(element))
+    return stack.pop()
+```
+</p>
+</details>
+
+___
+
+### 8. Reverse a Stack
+
+
