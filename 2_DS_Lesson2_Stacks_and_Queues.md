@@ -1342,3 +1342,185 @@ ___
 
 ### 9. Minimum Bracket Reversals
 
+**Problem Statment**
+
+Given an input string consisting of only `{` and `}`, figure out the minimum number of reversals required to make the brackets balanced.
+
+For example:
+
+For `input_string = "}}}}`, the number of reversals required is `2`.
+For `input_string = "}{}}`, the number of reversals required is `1`.
+If the brackets cannot be balanced, return `-1` to indicate that it is not possible to balance them.
+
+```Python 
+class LinkedListNode:
+
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Stack:
+
+    def __init__(self):
+        self.num_elements = 0
+        self.head = None
+
+    def push(self, data):
+        new_node = LinkedListNode(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.num_elements += 1
+
+    def pop(self):
+        if self.is_empty():
+            return None
+        temp = self.head.data
+        self.head = self.head.next
+        self.num_elements -= 1
+        return temp
+
+    def top(self):
+        if self.head is None:
+            return None
+        return self.head.data
+
+    def size(self):
+        return self.num_elements
+
+    def is_empty(self):
+        return self.num_elements == 0
+```
+
+```Python 
+def minimum_bracket_reversals(input_string):
+	"""
+	Calculate the number of reversals to fix the brackets
+
+	Args: 
+	   input_string(string): Strings to be used for bracket reversal calculation
+	Returns: 
+	   int: Number of bracket reversals needed
+	"""
+	# TODO: Write function here
+	 pass
+
+```
+
+```Python 
+def test_function(test_case):
+    input_string = test_case[0]
+    expected_output = test_case[1]
+    output = minimum_bracket_reversals(input_string)
+    
+    if output == expected_output:
+        print("Pass")
+    else:
+        print("Fail")
+```
+```Python 
+test_case_1 = ["}}}}", 2]
+test_function(test_case_1)
+```
+```Python 
+test_case_2 = ["}}{{", 2]          
+test_function(test_case_2)
+```
+```Python 
+test_case_2 = ["}}{{", 2]          
+test_function(test_case_2)
+```
+```Python 
+test_case_3 = ["{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{}}}}}", 13]
+
+test_function(test_case_1)
+```
+
+```Python 
+test_case_4= ["}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{", 2]
+test_function(test_case_2)
+```
+
+```Python
+test_case_5 = ["}}{}{}{}{}{}{}{}{}{}{}{}{}{}{}", 1]
+
+test_function(test_case_3)
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+
+```Python
+def minimum_bracket_reversals(input_string):
+    if len(input_string) % 2 == 1:
+        return -1
+
+    stack = Stack()
+    count = 0
+    for bracket in input_string:
+        if stack.is_empty():
+            stack.push(bracket)
+        else:
+            top = stack.top()
+            if top != bracket:
+                if top == '{':
+                    stack.pop()
+                    continue
+            stack.push(bracket)
+
+    ls = list()
+    while not stack.is_empty():
+        first = stack.pop()
+        second = stack.pop()
+        ls.append(first)
+        ls.append(second)
+        if first == '}' and second == '}':
+            count += 1
+        elif first == '{' and second == '}':
+            count += 2
+        elif first == '{' and second == '{':
+            count += 1
+    return count
+```
+</p>
+</details>
+
+___
+
+
+### 10. Queues
+
+First in, First out data structure a.k.a. a **Queue**
+
+It's kind of an oppoiste of a stack. In a stack the most recently added element comes out first, but here in Queues the oldest element comes out first. 
+
+The first or oldest element in a Queue, is called the **head**.
+
+The last element in the queue or the newest element in the queue, is called the **tail**
+
+When you add an element to the tail the operation is called an **enqueue**.
+
+When you remove the head element, the operation is called **dequeue**.
+
+There is also an operation called **peek**, where you look at the head element, but you don't actually remove it. 
+
+You can implement this data structure with a linked list, where you also save references to the head and tail so you can look them both up in **constant time**
+
+There are actually tow special types of queues that show up a lot. 
+
+A **deck/deque(pronounced deck)** or **double-ended queue** is a queue that goes both ways. 
+
+You can enqueue or dequeue from either end. 
+
+A deck is a generalized version of both stacks and queues. 
+
+Since, you can represent either of them with it, you could treak it like a stack and add and remove elements from the same end, or you could treat it like a queue and add elements on one end and remove them from the other. 
+
+In a **Priority Queue**, you assign each element a numerical priority when you insert it into the queue. When you dequeue, you remove the element with the highest priority. 
+
+If the elements have the same priority then the oldest element is the one that gets dequeued first. 
+
+
