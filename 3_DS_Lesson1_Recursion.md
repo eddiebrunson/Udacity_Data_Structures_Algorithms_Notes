@@ -762,3 +762,83 @@ def keypad(num):
     
     pass
 ```
+
+```Python
+def test_keypad(input, expected_output):
+    if sorted(keypad(input)) == expected_output:
+        print("Yay. We got it right.")
+    else:
+        print("Oops! That was incorrect.")
+```
+
+```Python
+# Base case: list with empty string
+input = 0
+expected_output = [""]
+test_keypad(input, expected_output)
+```
+
+```Python
+# Example case
+input = 23
+expected_output = sorted(["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"])
+test_keypad(input, expected_output)
+```
+
+```Python
+# Example case
+input = 32
+expected_output = sorted(["da", "db", "dc", "ea", "eb", "ec", "fa", "fb", "fc"])
+test_keypad(input, expected_output)
+```
+
+```Python
+# Example case
+input = 8
+expected_output = sorted(["t", "u", "v"])
+test_keypad(input, expected_output)
+```
+```Python
+input = 354
+expected_output = sorted(["djg", "ejg", "fjg", "dkg", "ekg", "fkg", "dlg", "elg", "flg", "djh", "ejh", "fjh", "dkh", "ekh", "fkh", "dlh", "elh", "flh", "dji", "eji", "fji", "dki", "eki", "fki", "dli", "eli", "fli"])
+test_keypad(input, expected_output)
+```
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+def keypad(num):
+    if num <= 1:
+        return [""]
+    elif 1 < num <= 9:
+        return list(get_characters(num))
+
+    last_digit = num % 10
+    small_output = keypad(num//10)
+    keypad_string = get_characters(last_digit)
+    output = list()
+    for character in keypad_string:
+        for item in small_output:
+            new_item = item + character
+            output.append(new_item)
+    return output
+```
+</p>
+</details>
+
+___
+
+### 9. Deep Reverse
+
+**Problem Statement**
+
+Define a procedure, `deep_reverse`, that takes as input a list, and returns a new list that is the deep reverse of the input list.
+This means it reverses all the elements in the list, and if any of those elements are lists themselves, reverses all the elements in the inner list, all the way down.
+
+>Note: The procedure must not change the input list itself.
+
+```Python 
+def deep_reverse(arr):
+    pass
+```
+
