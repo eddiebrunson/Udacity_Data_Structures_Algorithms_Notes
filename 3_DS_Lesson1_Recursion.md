@@ -346,3 +346,419 @@ print ("Pass" if  (120 == factorial(5)) else "Fail")
 </p>
 </details>
 
+### Reversing a String 
+
+The goal if to get practice with a problem that is frequently solved by recursionL Resering a string.
+
+Note that Python has a built-in function that you could use for this, but the goal here is to avoid that and understand how it can be done using recursion instead. 
+
+```Python
+# Code
+
+def reverse_string(input):
+    """
+    Return reversed input string
+    
+    Examples:
+       reverse_string("abc") returns "cba"
+    
+    Args:
+      input(str): string to be reversed
+    
+    Returns:
+      a string that is the reverse of input
+    """
+    
+    # TODO: Write your recursive string reverser solution here
+    
+    pass
+```
+```Python
+# Test Cases
+    
+print ("Pass" if  ("" == reverse_string("")) else "Fail")
+print ("Pass" if  ("cba" == reverse_string("abc")) else "Fail")
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+# Solution
+
+def reverse_string(input):
+    """
+    Return reversed input string
+    
+    Examples:
+       reverse_string("abc") returns "cba"
+    
+    Args:
+      input(str): string to be reversed
+    
+    Returns:
+      a string that us reversed of input
+    """
+    if len(input) == 0:
+        return ""
+    else:
+        first_char = input[0]
+        the_rest = slice(1, None)
+        sub_string = input[the_rest]
+        reversed_substring = reverse_string(sub_string)
+        return reversed_substring + first_char
+
+print ("Pass" if  ("" == reverse_string("")) else "Fail")
+print ("Pass" if  ("cba" == reverse_string("abc")) else "Fail")
+```
+</p>
+</details>
+
+___
+
+
+### 5. Palindrome 
+
+A **palindrome** is a word that is the reverse of itself --that is, it is the same word when read forwards and backwards.
+
+For example:
+
+* "madam" is a palindrome
+* "abba" is a palindrome 
+* "cat" is not 
+* "a" is a trivial case of a palindrome 
+
+The goal of this exercise is to use recursion to write a function `is_palindrome` that take a string as input and checks whether that string is a palindrome. (Note that this problem can also be solved with a non-recursive solution, but that's not the point of this exercise.)
+
+```Python
+def is_palindrome(input):
+    """
+    Return True if input is palindrome, False otherwise.
+    
+    Args:
+       input(str): input to be checked if it is palindrome
+    """
+    
+    # TODO: Write your recursive palindrome checker here
+    
+    pass
+```
+
+```Python
+# Test Cases
+
+print ("Pass" if  (is_palindrome("")) else "Fail")
+print ("Pass" if  (is_palindrome("a")) else "Fail")
+print ("Pass" if  (is_palindrome("madam")) else "Fail")
+print ("Pass" if  (is_palindrome("abba")) else "Fail")
+print ("Pass" if not (is_palindrome("Udacity")) else "Fail")
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+# Solution
+
+def is_palindrome(input):
+    """
+    Return True if input is palindrome, False otherwise.
+
+    Args:
+       input(str): input to be checked if it is palindrome
+    """
+    if len(input) <= 1:
+        return True
+    else:
+        first_char = input[0]
+        last_char = input[-1]
+
+        # sub_input is input with first and last char removed
+        sub_input = input[1:-1]
+
+        return (first_char == last_char) and is_palindrome(sub_input)
+
+print ("Pass" if  (is_palindrome("")) else "Fail")
+print ("Pass" if  (is_palindrome("a")) else "Fail")
+print ("Pass" if  (is_palindrome("madam")) else "Fail")
+print ("Pass" if  (is_palindrome("abba")) else "Fail")
+print ("Pass" if not (is_palindrome("Udacity")) else "Fail")
+```
+</p>
+</details>
+
+___
+
+### 6. Permutation
+
+Let's use recursion to help use solve this permutation problem: 
+
+Given a list of items, the goal is to find all of the permutations of that list. For example, if given a list like: `["apple", "water"]`, you could create two permuations from it. One in the form of the original input and one in the reversed order like so: `["water", "apple"]`
+
+```Python 
+# Code
+
+import copy
+
+def permute(l):
+    """
+    Return a list of permutations
+    
+    Examples:
+       permute([0, 1]) returns [ [0, 1], [1, 0] ]
+    
+    Args:
+      l(list): list of items to be permuted
+    
+    Returns:
+      list of permutation with each permuted item being represented by a list
+    """
+    pass
+```
+```Python 
+# Test Cases 
+
+# Helper Function
+def check_output(output, expected_output):
+    """
+    Return True if output and expected_output
+    contains the same lists, False otherwise.
+    
+    Note that the ordering of the list is not important.
+    
+    Examples:
+        check_output([ [0, 1], [1, 0] ] ], [ [1, 0], [0, 1] ]) returns True
+
+    Args:
+        output(list): list of list
+        expected_output(list): list of list
+    
+    Returns:
+        bool
+    """
+    o = copy.deepcopy(output)  # so that we don't mutate input
+    e = copy.deepcopy(expected_output)  # so that we don't mutate input
+    
+    o.sort()
+    e.sort()
+    return o == e
+
+print ("Pass" if  (check_output(permute([]), [[]])) else "Fail")
+print ("Pass" if  (check_output(permute([0]), [[0]])) else "Fail")
+print ("Pass" if  (check_output(permute([0, 1]), [[0, 1], [1, 0]])) else "Fail")
+print ("Pass" if  (check_output(permute([0, 1, 2]), [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]])) else "Fail")
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+# Solution 
+
+
+import copy
+
+def permute(l):
+    """
+    Return a list of permutations
+
+    Examples:
+       permute([0, 1]) returns [ [0, 1], [1, 0] ]
+
+    Args:
+      l(list): list of items to be permuted
+
+    Returns:
+      list of permutation with each permuted item be represented by a list
+    """
+    perm = []
+    if len(l) == 0:
+        perm.append([])
+    else:
+        first_element = l[0]
+        after_first = slice(1, None)
+        sub_permutes = permute(l[after_first])
+        for p in sub_permutes:
+            for j in range(0, len(p) + 1):
+                r = copy.deepcopy(p)
+                r.insert(j, first_element)
+                perm.append(r)
+    return perm
+
+def check_output(output, expected_output):
+    """
+    Return True if output and expected_output
+    contains the same lists, False otherwise.
+    
+    Note that the ordering of the list is not important.
+    
+    Examples:
+        check_output([ [0, 1], [1, 0] ] ], [ [1, 0], [0, 1] ]) returns True
+
+    Args:
+        output(list): list of list
+        expected_output(list): list of list
+    
+    Returns:
+        bool
+    """
+    o = copy.deepcopy(output)  # so that we don't mutate input
+    e = copy.deepcopy(expected_output)  # so that we don't mutate input
+    
+    o.sort()
+    e.sort()
+    return o == e
+
+print ("Pass" if  (check_output(permute([]), [[]])) else "Fail")
+print ("Pass" if  (check_output(permute([0]), [[0]])) else "Fail")
+print ("Pass" if  (check_output(permute([0, 1]), [[0, 1], [1, 0]])) else "Fail")
+print ("Pass" if  (check_output(permute([0, 1, 2]), [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]])) else "Fail")
+
+```
+</p>
+</details>
+
+___
+
+### 7. String Permutations
+
+**Problem Statement**
+
+Given an input string, return all permutations of the string in an array. 
+
+**Example 1:**
+
+* `string = 'ab'`
+* `output = ['ab', 'ba']`
+
+**Example 2:**
+
+* `string = 'abc'`
+* `output = ['abc', 'bac', 'bca', 'acb', 'cab' 'cba']`
+
+```Python 
+def permutations(string):
+    """
+    :param: input string
+    Return - list of all permutations of the input string
+    TODO: complete this function to return a list of all permutations of the string
+    """
+    pass
+```
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+# Solution
+def permutations(string):
+    return return_permutations(string, 0)
+    
+def return_permutations(string, index):
+    # Base Case
+    if index >= len(string):
+        return [""]
+    
+    small_output = return_permutations(string, index + 1)
+    
+    output = list()
+    current_char = string[index]
+    
+    # iterate over each permutation string received thus far
+    # and place the current character at between different indices of the string
+    for permutation in small_output:
+        for index in range(len(small_output[0]) + 1):
+            new_permutation = permutation[0: index] + current_char + permutation[index:]
+            output.append(new_permutation)
+    return output
+```
+</p>
+</details>
+
+
+```Python
+def test_function(test_case):
+    string = test_case[0]
+    solution = test_case[1]
+    output = permutations(string)
+    
+    output.sort()
+    solution.sort()
+    
+    if output == solution:
+        print("Pass")
+    else:
+        print("Fail")
+```
+```Python
+string = 'ab'
+solution = ['ab', 'ba']
+test_case = [string, solution]
+test_function(test_case)
+```
+Pass
+
+```Python
+string = 'abc'
+output = ['abc', 'bac', 'bca', 'acb', 'cab', 'cba']
+test_case = [string, output]
+test_function(test_case)
+```
+Pass
+
+```Python
+string = 'abcd'
+output = ['abcd', 'bacd', 'bcad', 'bcda', 'acbd', 'cabd', 'cbad', 'cbda', 'acdb', 'cadb', 'cdab', 'cdba', 'abdc', 'badc', 'bdac', 'bdca', 'adbc', 'dabc', 'dbac', 'dbca', 'adcb', 'dacb', 'dcab', 'dcba']
+test_case = [string, output]
+test_function(test_case)
+```
+Pass
+
+___
+
+### 8. Keypad Combintations
+
+**Keypad Combinations**
+
+A keypad on a cellphone has alphabets for all numbers between 2 and 9.
+
+You can make different combinations of alphabets by pressing the numbers.
+
+For example, if you press 23, the following combinations are possible:
+
+`ad, ae, af, bd, be, bf, cd, ce, cf`
+
+Note that because 2 is pressed before 3, the first letter is always an alphabet on the number 2. Likewise, if the user types 32, the order would be
+
+`da, db, dc, ea, eb, ec, fa, fb, fc`
+
+Given an integer `num`, find out all the possible strings that can be made using digits of input `num`. Return these strings in a list. The order of strings in the list does not matter. However, as stated earlier, the order of letters in a particular string matters.
+
+
+```Python
+def get_characters(num):
+    if num == 2:
+        return "abc"
+    elif num == 3:
+        return "def"
+    elif num == 4:
+        return "ghi"
+    elif num == 5:
+        return "jkl"
+    elif num == 6:
+        return "mno"
+    elif num == 7:
+        return "pqrs"
+    elif num == 8:
+        return "tuv"
+    elif num == 9:
+        return "wxyz"
+    else:
+        return ""
+
+
+def keypad(num):
+    
+    # TODO: Write your keypad solution here!
+    
+    pass
+```
