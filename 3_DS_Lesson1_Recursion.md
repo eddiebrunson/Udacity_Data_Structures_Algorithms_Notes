@@ -1345,3 +1345,283 @@ num_disks = 4
 
 ___
 
+### 13. Return Codes
+
+**Problem statement**
+
+In an encryption system where ASCII lower case letters represent numbers in the pattern `a=1, b=2, c=3...` and so on, find out all the codes that are possible for a given input number. 
+
+**Example 1**
+
+* `number = 123`
+* `codes_possible = ["aw", "abc", "lc"]`
+
+Explanation: The codes are for the following number:
+         
+* 1 . 23     = "aw"
+* 1 . 2 . 3  = "abc"
+* 12 . 3     = "lc"
+    
+
+**Example 2**  
+
+* `number = 145`
+* `codes_possible = ["ade", "ne"]`
+
+Return the codes in a list. The order of codes in the list is not important.
+
+*Note: you can assume that the input number will not contain any 0s*
+
+```Python 
+def all_codes(number):
+    """
+    :param: number - input integer
+    Return - list() of all codes possible for this number
+    TODO: complete this method and return a list with all possible codes for the input number
+    """
+    pass
+```
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+# Solution
+
+def get_alphabet(number):
+    """
+    Helper function to figure out alphabet of a particular number
+    Remember: 
+        * ASCII for lower case 'a' = 97
+        * chr(num) returns ASCII character for a number e.g. chr(65) ==> 'A'
+    """
+    return chr(number + 96)
+
+def all_codes(number):
+    if number == 0:
+        return [""]
+    
+    # calculation for two right-most digits e.g. if number = 1123, this calculation is meant for 23
+    remainder = number % 100
+    output_100 = list()
+    if remainder <= 26 and number > 9 :
+        
+        # get all codes for the remaining number
+        output_100 = all_codes(number // 100)
+        alphabet = get_alphabet(remainder)
+        
+        for index, element in enumerate(output_100):
+            output_100[index] = element + alphabet
+    
+    # calculation for right-most digit e.g. if number = 1123, this calculation is meant for 3
+    remainder = number % 10
+    
+    # get all codes for the remaining number
+    output_10 = all_codes(number // 10)
+    alphabet = get_alphabet(remainder)
+    
+    for index, element in enumerate(output_10):
+        output_10[index] = element + alphabet
+        
+    output = list()
+    output.extend(output_100)
+    output.extend(output_10)
+    
+    return output
+```
+</p>
+</details>
+
+___
+
+```Python
+number = 123
+solution = ['abc', 'aw', 'lc']
+test_case = [number, solution]
+test_function(test_case)
+```
+Pass
+
+```Python 
+number = 145
+solution =  ['ade', 'ne']
+test_case = [number, solution]
+test_function(test_case)
+```
+Pass
+
+```Python 
+number = 1145
+solution =  ['aade', 'ane', 'kde']
+test_case = [number, solution]
+test_function(test_case)
+```
+Pass
+
+```Python
+number = 4545
+solution = ['dede']
+test_case = [number, solution]
+test_function(test_case)
+```
+
+___
+
+
+### 14. Return Subsets
+
+**Problem Statement**
+
+Given an integer array, find and return all the subsets of the array. The order of subsets in the output array is not important. However the order of elements in a particular subset should remain the same as in the input array.
+
+Note: An empty set will be represented by an empty list
+
+```Python
+Example 1
+
+arr = [9]
+
+output = [[]
+          [9]]
+Example 2
+
+arr = [9, 12, 15]
+
+output =  [[],
+           [15],
+           [12],
+           [12, 15],
+           [9],
+           [9, 15],
+           [9, 12],
+           [9, 12, 15]]
+```
+
+```Python
+def subsets(arr):
+    """
+    :param: arr - input integer array
+    Return - list of lists (two dimensional array) where each list represents a subset
+    TODO: complete this method to return subsets of an array
+    """
+    pass
+```
+
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+# Solution
+def subsets(arr):
+    return return_subsets(arr, 0)
+
+def return_subsets(arr, index):
+    if index >= len(arr):
+        return [[]]
+
+    small_output = return_subsets(arr, index + 1)
+
+    output = list()
+    # append existing subsets
+    for element in small_output:
+        output.append(element)
+
+    # add current elements to existing subsets and add them to the output
+    for element in small_output:
+        current = list()
+        current.append(arr[index])
+        current.extend(element)
+        output.append(current)
+    return output
+```
+</p>
+</details>
+
+___
+
+```Python
+def test_function(test_case):
+    arr = test_case[0]
+    solution = test_case[1]
+    
+    output = subsets(arr)
+        
+    output.sort()
+    solution.sort()
+    
+    if output == solution:
+        print("Pass")
+    else:
+        print("Fail")    
+```
+
+```Python
+arr = [9]
+solution = [[], [9]]
+
+test_case = [arr, solution]
+test_function(test_case)
+```
+Pass
+
+```Python
+arr = [5, 7]
+solution = [[], [7], [5], [5, 7]]
+test_case = [arr, solution]
+test_function(test_case)
+```
+Pass
+
+```Python
+arr = [9, 12, 15]
+solution = [[], [15], [12], [12, 15], [9], [9, 15], [9, 12], [9, 12, 15]]
+
+test_case = [arr, solution]
+test_function(test_case)
+```
+Pass
+
+```Python
+arr = [9, 8, 9, 8]
+solution = [[],
+[8],
+[9],
+[9, 8],
+[8],
+[8, 8],
+[8, 9],
+[8, 9, 8],
+[9],
+[9, 8],
+[9, 9],
+[9, 9, 8],
+[9, 8],
+[9, 8, 8],
+[9, 8, 9],
+[9, 8, 9, 8]]
+
+test_case = [arr, solution]
+test_function(test_case)
+```
+Pass
+
+___
+
+### 15. Staircase
+
+### Problem Statement
+
+Suppose there is a staircase that you can climb in either 1 step, 2 steps, or 3 steps. In how many possible ways can you climb the staircase if the staircase has `n` steps? Write a recursive function to solve the problem.
+
+**Example:**
+
+* `n = 3`
+* `output = 4`
+    
+The output is `4` because there are four ways we can climb the staircase:
+    
+    1. 1 step +  1 step + 1 step
+    2. 1 step + 2 steps 
+    3. 2 steps + 1 step
+    4. 3 steps
+
+    
