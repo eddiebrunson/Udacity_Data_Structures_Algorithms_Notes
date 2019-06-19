@@ -1624,4 +1624,88 @@ The output is `4` because there are four ways we can climb the staircase:
     3. 2 steps + 1 step
     4. 3 steps
 
+
+```Python
+def staircase(n):
+    """
+    :param: n - number of steps in the staircase
+    Return number of possible ways in which you can climb the staircase
+    TODO - write a recursive function to solve this problem
+    """
+    pass
+```
+<details><summary><b>Solution</b></summary>
+<p>
+
+```Python 
+# Solution
+## Read input as specified in the question.
+## Print output as specified in the question.
+
+
+def staircase(n):
+    if n <= 0:
+        return 1
     
+    if n == 1:
+        return 1
+    elif n == 2:
+        return 2
+    elif n == 3:
+        return 4
+    
+    return staircase(n - 1) + staircase(n - 2) + staircase(n - 3)
+```
+</p>
+</details>
+
+
+```Python
+def test_function(test_case):
+    n = test_case[0]
+    solution = test_case[1]
+    output = staircase(n)
+    if output == solution:
+        print("Pass")
+    else:
+        print("Fail")
+```
+
+```Python
+n = 3
+solution = 4
+test_case = [n, solution]
+test_function(test_case)
+```
+Pass
+
+```Python
+n = 4
+solution = 7
+test_case = [n, solution]
+test_function(test_case)
+```
+Pass
+
+```Python
+n = 7
+solution = 44
+test_case = [n, solution]
+test_function(test_case)
+```
+Pass
+
+___
+
+### Last Index
+
+**Problem statement**
+
+Given an array `arr` and a target element `target`, find the last index of occurence of `target` in `arr` using recursion. If `target` is not present in `arr`, return `-1`.
+
+For example:
+
+1. For `arr = [1, 2, 5, 5, 4]` and `target = 5`, `output = 3`
+
+2. For `arr = [1, 2, 5, 5, 4]` and `target = 7`, `output = -1`
+
