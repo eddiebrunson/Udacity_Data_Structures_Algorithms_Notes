@@ -64,4 +64,34 @@ ___
 
 ### 4. Tree Traversal
 
+In linked list traversal- we just needed ot make sure we looked at every element. Trees aren't linear, so there's no clear way to traverse through everything. 
+
+There are two different broad approachers to treat traversal:
+
+* DFS- depth-first search, where if there are children nodes to explore, exploring them is the priority. 
+
+* BFS- breadth-first search, the priority is visiting every node on the same level wer're currently on before visiting child nodes. 
+
+For Trees a level order traversal is a **BFS** with a more exact algorithm to implement. 
+
+A level order traveral is exactly what it sounds like. Start at the root then visit it's children on the second level then all of their children on the third level until you've visited every single leaf. 
+
+By convention, we start on the left most side of the level and move right. 
+
+___
+
+### 5. Depth-First Traversals 
+
+There are several different approaches to DFS and trees. 
+
+First there is **Pre-Order** traversals, check off a node as you see it before you traverse any furthere in the tree. 
+
+Check the root node, then by convention go down the next node on the left and continue traversing down the left most nodes until we hit a leaf. 
+
+
+
+
+
+
+
 
