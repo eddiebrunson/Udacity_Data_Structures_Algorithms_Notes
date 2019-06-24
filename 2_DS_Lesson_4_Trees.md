@@ -73,6 +73,14 @@ There are two different broad approachers to treat traversal:
 * BFS- breadth-first search, the priority is visiting every node on the same level wer're currently on before visiting child nodes. 
 
 For Trees a level order traversal is a **BFS** with a more exact algorithm to implement. 
+                        **BFS Level Order Traversal**
+                                   D
+                                  / \
+                                 B   E
+                                / \   \
+                               A   C   F
+                            D, B, E, A, C, F 
+
 
 A level order traveral is exactly what it sounds like. Start at the root then visit it's children on the second level then all of their children on the third level until you've visited every single leaf. 
 
