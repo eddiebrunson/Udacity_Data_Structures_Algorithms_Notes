@@ -74,6 +74,7 @@ There are two different broad approachers to treat traversal:
 
 For Trees a level order traversal is a **BFS** with a more exact algorithm to implement. 
                         **BFS Level Order Traversal**
+                        
                                    D
                                   / \
                                  B   E
