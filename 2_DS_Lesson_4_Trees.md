@@ -84,14 +84,37 @@ ___
 
 There are several different approaches to DFS and trees. 
 
-First there is **Pre-Order** traversals, check off a node as you see it before you traverse any furthere in the tree. 
+1. First there is **Pre-Order** traversals, check off a node as you see it before you traverse any furthere in the tree. 
 
 Check the root node, then by convention go down the next node on the left and continue traversing down the left most nodes until we hit a leaf. 
 
+Then we check off the leaf and from there go back up to the parent. Then traverse to the right child and check it off too. 
+
+Next, go back up to the the next child and do the exact same steps until we have seen everything. 
+
+2. **In-Order** traversal- means moving through the nodes in the same order, only check off a node when we seen it's left child and come back to it. 
+
+Start at the root and go down the left child until we hit a leaf, we check off the leaf and move up to the parent. We can check off the left parent since we have seen it now. Then move on to the right node, which has no children, so we can check it off too. Go back up to the root and repeat all of this on the right side until we are done. 
+
+3. Lastly, we have the **post-order** traversal. We won't be able to to check off a node unitl we've seen all of it's descendants or we visited both of it's children and returned. 
+
+Simliar steps, we begin at the root, don't check it off, but continue down to a leaf. We check off the leaf and move to the parent. This time we don't check off the parent though, we just move on to the right node. Once we check off the right node we can go back up to the parent and finally check it off too. 
+
+Again, we'll skip over the root node and just move all the way down to the right. 
+
+                          **Post-Order Traversal**
+                                     D
+                                   /  \
+                                 B     E
+                                / \     \
+                               A   C     F
+                           
+                            A, C, B, F, E, D
 
 
+___
 
-
+### 6. Search and Delete
 
 
 
