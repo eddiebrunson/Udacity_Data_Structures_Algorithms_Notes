@@ -145,5 +145,111 @@ ___
 
 ### 6. Search and Delete
 
+Binary trees, are trees where parents have at most two children. 
 
+This means nodes can have 0, 1, or 2 children. The children might even be null, but that's okay. 
+
+___
+
+*Search* in a Binary Tree- We can start off by using any of the traversal algorithms to go through the tree. Because there is no real order to the elements, you have to go through every single element in the tree if the value I'm looking for doesn't exist. 
+
+This is a linear time search. 
+
+A *delete* operation often starts out with a search since you need to find the node you want to delete. If you are deleting a leaf, you can simply delete it and move on. 
+
+If you delete an internal node, you'll suddenly have a gap in the tree. If the node you deleted only has one child, you can actually just take it out, move the child up and attach it to the old node's parent. 
+
+If you are trying to get rid of a node that has two children, you have a few options. 
+
+You could promote the child up just like before. 
+
+--> What if both children also have two children?
+
+In the worst case you will need to keep traversing down the sub tree until you hit a leaf. Since there is no real order requirement here, you can just put the leaf where your deleted node was without a problem. 
+
+Since there is a search involved and some additional work to shift around the elements after deletion, *the run time is linear*. 
+
+___
+
+### 7. Insert
+
+Inserting an element into our tree whenit has no order is relatively easy. You just tuck our node onto another node. 
+
+Maybe it's a leaf or maybe it's a parent with only one child. 
+
+We only need to make sure that we're obeying the two children rule. 
+
+We are given the root at the beginning and we will need to keep moving down the tree until we find a open spot. 
+
+-->How long will it take to find an open spot?
+
+The *worst case* is that we travel down the longest path until we find the farthest leaf. 
+
+In that case, we travel through the number of nodes equal to the height of the tree. 
+
+--> But, what is the height of a binary tree?
+
+Like we did with the sorting algorithms, let's look at some examples and reason through it. 
+
+Here are two different trees:
+
+         O                       O 
+        / \                    /   \
+       O   O                  O     O
+                             / \   / \
+                            O   O  O  O
+* 3 Nodes                  * 7 Nodes 
+* 2 Levels                 * 3 levels
+
+These are called **Perfect trees** since every node except the leafs on the last level has two children. 
+
+As the tree grows bigger, each new level has the capacity to hold a number of nodes equivalent to a power of two
+```
+Level 1     2^0
+Level 2     2^1
+Level 3     2^3
+```
+
+Each node can have two children, so each new level can have twice as many nodes as the one before it. 
+
+Since we have gone back to talking about powers of two, our minds should jump back to log(n). 
+
+--> Does log(n) apply here?
+
+At every level we are adding roughly twice as many elements.
+
+Everytime we need to add a new level or in a binary search divider array an other term, its bc we're giving ourselves the space to allow for about twice as many elements. 
+
+n=3
+
+```
+
+new row...
+
+n + (n + 1)
+
+y
+2n + 1 = 7 
+
+elements
+```
+
+Remember that we're adding a power of two at each level, so when we count up the nodes overall, it won't be exactly a power of two. 
+
+```
+3 levels                                      log(1)=0
+                                              log(2)=1
+   |                                          log(4)=2 
+   V                                          log(8)=3
+7 nodes
+
+log(7)=/(not exactly sign)3
+
+
+```
+Having three levels doesn't mean an overall node count of eight, but it does mean that the fourth level itself will have eight elements in it. 
+
+---
+
+### 8. Binary Search Tree
 
