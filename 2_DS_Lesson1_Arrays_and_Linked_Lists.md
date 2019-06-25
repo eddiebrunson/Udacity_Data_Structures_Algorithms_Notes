@@ -191,7 +191,7 @@ def string_reverser(our_string):
 
     # Iterate over old string
     for i in range(len(our_string)):
-        # Grab the charecter from the back of the string and add them to the new string
+        # Grab the character from the back of the string and add them to the new string
         new_string += our_string[(len(our_string)-1)-i]
 
     # Return our solution
@@ -211,7 +211,7 @@ ___
 
 **Anagrams**
 
-THe goal of this exercise if to write code to determine if two strings are anagrams of each other. 
+The goal of this exercise if to write code to determine if two strings are anagrams of each other. 
 
 An anagram is a word (or phrase) that is formed by rearranging the letters of another word (or phrase).
 
@@ -431,7 +431,7 @@ ___
 
 You can think of an array as a set of boxes where each has an address called an index. 
 
-A paper chaing is like a similar construct called a linked list. 
+A paper chain is like a similar construct called a linked list. 
 
 A linked list is an extension of a list, but is definitely not an array. 
 
@@ -439,7 +439,7 @@ There are still some things that have order, but there are no indices.
 
 A linked list is characterized by its links. 
 
-Each element has some notion of waht the next element is since it's connected to it, but not necessarily how long the list is or where it is in the list. 
+Each element has some notion of what the next element is since it's connected to it, but not necessarily how long the list is or where it is in the list. 
 
 An array is different. There is nothing in one element of the array that says here's your next element. You know what the next element is by what the next index is. 
 
@@ -453,20 +453,20 @@ ___
 
 The main difference between *linked lists* and *arrays*, is that each element stores different information. 
 
-* It's important to know the differences between the two data structures as it is asked in interviews often. 
+It's important to know the differences between the two data structures as it is asked in interviews often. 
 
 
-* It both cases a single element can store a value 
+* In both cases a single element can store a value 
 * In an **array** we store a number as an index 
 * You can get the next element by querying the array for the element at index one in this case. 
 
-Where as in a **linked list**, we store a reference to the next element in the list. In many languages this will look like assigning the actual next element as a proerty of this element. Way down at the hardware level your element actually has some space dedicated for it in memory. 
+Where as in a **linked list**, we store a reference to the next element in the list. In many languages this will look like assigning the actual next element as a property of this element. Way down at the hardware level your element actually has some space dedicated for it in memory. 
 
 It's pretty easy to insert and delete elements. 
 
 Adding an element changes the next reference to point to the new object and done. 
 
-**Important** if you delete the next reference and replace it with a new object. You'll lose your reference to this object, you should always assign your next pointer for this element before you assign your next pointer for this element, so you don't lose your reference to th is one down here. 
+**Important** if you delete the next reference and replace it with a new object. You'll lose your reference to this object, you should always assign your next pointer for this element before you assign your next pointer for this element, so you don't lose your reference to this one down here. 
 
 * Note that insertion takes constant time in this case, since you are just shifting around pointers and not iterating over every element in the list. 
 
