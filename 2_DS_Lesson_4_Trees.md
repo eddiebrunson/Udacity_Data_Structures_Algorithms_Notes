@@ -73,8 +73,8 @@ There are two different broad approachers to treat traversal:
 * BFS- breadth-first search, the priority is visiting every node on the same level wer're currently on before visiting child nodes. 
 
 For Trees a level order traversal is a **BFS** with a more exact algorithm to implement. 
-                        **BFS Level Order Traversal**
                         
+                        **BFS Level Order Traversal**
                                    D
                                   / \
                                  B   E
@@ -93,8 +93,18 @@ ___
 
 There are several different approaches to DFS and trees. 
 
-1. First there is **Pre-Order** traversals, check off a node as you see it before you traverse any furthere in the tree. 
+1. First there is **Pre-Order** traversals, check off a node as you see it before you traverse any furthere in the tree.
 
+```
+                        **Pre-Order Traversal**
+                                   D
+                                  / \
+                                 B   E
+                                / \   \
+                               A   C   F
+
+                            D, B, A, C, E F
+```
 Check the root node, then by convention go down the next node on the left and continue traversing down the left most nodes until we hit a leaf. 
 
 Then we check off the leaf and from there go back up to the parent. Then traverse to the right child and check it off too. 
@@ -102,6 +112,16 @@ Then we check off the leaf and from there go back up to the parent. Then travers
 Next, go back up to the the next child and do the exact same steps until we have seen everything. 
 
 2. **In-Order** traversal- means moving through the nodes in the same order, only check off a node when we seen it's left child and come back to it. 
+
+```
+                         **In-Order Traversal**
+                                   D
+                                  / \ 
+                                 B   E
+                                / \   \
+                               A   C   F
+                            A, B, C, D, E, F
+```
 
 Start at the root and go down the left child until we hit a leaf, we check off the leaf and move up to the parent. We can check off the left parent since we have seen it now. Then move on to the right node, which has no children, so we can check it off too. Go back up to the root and repeat all of this on the right side until we are done. 
 
