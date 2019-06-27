@@ -259,4 +259,38 @@ There is a specific type of binary tree called a **binary search tree(BST)**
 
 Every parent node has at most two children. 
 
+BSTs are sorted so every valu on the left of a particular node is smaller than it and every value on the right of a particular node is larger than it. 
+
+Because BSTs have this structure, we can do operations like search, insert, and delete pretty quickly. 
+
+The run time of a search on a BST is just the height of the tree, which we proved was log(n) when we learned about inserting. 
+
+Inserting in a binary tree is pretty much the same process. 
+
+You start at the top and you can make quick decisions about where to look at.
+
+
+___
+
+### 9. BST Complications
+
+                            Unbalanced BST
+                                 5
+                                  \ 
+                                   10
+                                     \
+                                      15
+                                        \
+                                         20
+
+
+If everything on the right is bigger and no children then we call it an **unbalanced binary tree**, since the distribution of nodes is skewed to the right side. 
+
+Which could also look like a worst case scenario for a BST. 
+
+When a tree looks like this search, insert, and delete all actually take linear time in the worst case. 
+
+The average case for these operations is Big O of log n, and the worst case for all of them is Big O of n. 
+
+
 
