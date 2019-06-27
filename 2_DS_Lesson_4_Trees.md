@@ -253,3 +253,10 @@ Having three levels doesn't mean an overall node count of eight, but it does mea
 
 ### 8. Binary Search Tree
 
+Ordering of elements are different amount different types of trees.
+
+There is a specific type of binary tree called a **binary search tree(BST)**
+
+Every parent node has at most two children. 
+
+
