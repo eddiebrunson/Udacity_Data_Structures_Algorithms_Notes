@@ -292,5 +292,43 @@ When a tree looks like this search, insert, and delete all actually take linear 
 
 The average case for these operations is Big O of log n, and the worst case for all of them is Big O of n. 
 
+___
+
+### 10. Practice overview
+
+Tree data Structures show up a lot in real life and specifically used in software engineering. 
+
+Trees 
+
+* Faster to retrieve data
+
+* Trees how up in Tree-based machine learning models (decision trees)
+
+
+
+**Coding Practice Objectives**
+
+* Create a binaray tree
+
+* Traverse a tree
+   * Depth first 
+   * Breadth first
+
+* Binary Search Tree
+   * Insert 
+   * Search
+   * Delete
+
+* Average Time Complexity 
+   * Tree --> log(n)
+
+> An easy way to remember the average time complexity of trees is to remember **"TREES HAVE LOGS"** thus log(n)
+
+___
+
+### 12. Code: Create a Binary Tree
+
+
+
 
 
