@@ -843,6 +843,10 @@ print(f"""stack
 ___
 
 **pre-order traversal using a stack (something's missing)**
+
+> it's going from B and then checking if there is a left child and there is, so it goes back to D. We don't want that! 
+
+
 Here is some code that has an error, so it will have an infinite loop. There is a counter to make the loop stop so that it doesn't run forever.
 ```Python
 def pre_order_with_stack_buggy(tree):
@@ -1023,6 +1027,40 @@ def post_order(tree):
 # check solution: should get: ['dates', 'banana', 'cherry', 'apple']
 post_order(tree)
 ```
+
+___
+
+Using a stack to keep track of which node we visited:
+
+DFS with a Stack
+
+Pre-Order Traversal
+
+Visit order:
+
+A, B, D, C 
+
+Then you are done with D so you remove (`pop`) it from the stack, check if it has a right child, nope, we remove B from the stack, then we are back to A, we check if it has a right child it does, So we add C to the stack, then check fr C's left and right child, it doesn't have them, so we are done with node C and we can pop it off the stack, then we are back to A, we alread visited it's left subtree and right subtree, so we `pop` it off the stack
+
+___
+
+DFS with Stack 
+
+**Track State**
+In-Order Traversal
+
+Visit Order:
+
+A, B, D, C
+
+
+Start with root node, check if it has left child it does, so we visit it, then we make a node that A: visited left, the with B, we check if it has a subtree, it does, so we visit D, and Push D onto the Stack, and make a note that B: visited left, then we pop D off the stack, and now we are at B, now it already knows we visited the left sub tree and it won't do that again. as well as right subtree, then we can pop B off the stack, we already saved information that we already visited the left, so we are going to visit the right subnode, and visit C, and push C onto the stack, then add that for A, we already visited the left and right subtree as well, so with check we check left, we check right, pop it off the stack, back at A, the save information show we alread visited the left and right subnodes, it can be popped off the stack. 
+
+___
+
+
+### 14. Code: BFS 
+
 
 
 
