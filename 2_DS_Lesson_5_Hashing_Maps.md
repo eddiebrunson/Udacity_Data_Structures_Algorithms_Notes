@@ -20,6 +20,31 @@ ___
 
 ### 2. Sets and Maps
 
+A set is comparable to a list, its also vaguely a collection of things, but with one big difference.
+
+A list has some kind of ordering for its elements. While a set doesn't have that, but instead doesn't allow for repeated elements. 
+
+You can think of a set kind of like a bag. You can reach in and pull something out, but you will never know what order you're getting the elements out in. 
+
+                              Map = < Key, Value >
+
+A map is a set-based data structure, kind of like an array is a list-based data structure. 
+
+A group of keys is a set. 
+
+The keys in the map, like a dictionary, need to be unique. 
+
+You can have several definitions for the same word stored in the value, but if you had the same word in the dictionary many times, you would randomly pick out a definition when you were first looking. 
+
+Thus, each key exists once in a Map. 
+
+A groupd ot this unique keys without any ordering is called a set. 
+
+
+___
+
+### 3. Exploring the Map Concept 
+
 In Python, the map concept appears as a built-in data type called a dictionary. A dictionary contains key-value pairs. Dictionaries might soon become your favorite data structure in Python—they're extremely easy to use and useful. Here's a sample of setting up a dictionary. 
 
 ```Python
@@ -40,10 +65,6 @@ In this case, the letters in "udacity" were each keys in our dictionary, and the
 ```Python
 print (udacity['t'])
 # 6
-```
-
-```Python
-
 ```
 
 This statement is saying "go to the key labeled 't' and find it's value, 6".
