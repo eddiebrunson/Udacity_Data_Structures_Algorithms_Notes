@@ -836,3 +836,40 @@ Therefore, when you are asked to solve any practice problem involving HashMaps, 
 
 ___
 
+### 9. String Keys
+
+You just need to come up with some hash function that converts letters into numbers. Individual letters can be pretty easily converted into ASCII values and many languages already have that function built in to do that. We can combine the ASCII values with a formula to get a unique hash for each letter. 
+
+There are some trade offs here. 
+
+--> Do we want every word in it's own bucket?
+
+--> Are you okay with collisions, but want a relatively simple hash function?
+
+If you have 30 or less words, you can probably just use the ASCII value for first letter of the string as a hash value. 
+
+The standard hash code function for string keys in Java there is a large hash table over having any collisions. 
+
+The formula looks something like this:
+
+`s[0] * 31^(n-1) + s[1] * 31^(n-2) + ... + s[n-1]`
+
+For example say we are going to hash the word `Udacity` and we are starting with the first two letters of the string, `UD`.
+
+We can plug these ASCII values into the equation to get our hash value that is unique to our string.
+
+`U = 85`
+`D = 68`
+
+`(85 * 31^1) + 68 = 2703`
+
+--> Why does this work?
+
+Well by multiplying the ASCII value for each letter by a power of some number like 31, we can guarantee that every number representation or hash value will be unique to that string. 
+
+ASCII values for common characters:
+
+32 to 126
+
+A hash function like that would be great for a dictionary where we need unique buckets for each string. 
+
