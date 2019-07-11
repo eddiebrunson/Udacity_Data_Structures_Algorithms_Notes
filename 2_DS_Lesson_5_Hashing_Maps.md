@@ -185,4 +185,34 @@ Give your number to a hash function, which spits out a hash code that turns into
 
 ___
 
+### 6. Collisions 
+
+There are times when a hash function will spit out the same value for two different inputs. 
+
+0123456 --> 56% of 10 = 6 
+
+6543216 --> 16% of 10 = 6
+
+This situation is called a **collision**.
+
+There are two main ways to fix a collision. 
+
+The first is to change the value in your hash function, or to change the hash function completely, so you have more than enough slots to store all of your potential values. 
+
+Or instead of storing one hash value in each spot, you could store some type of list that contains all values hashed at that spot. These lists are generally called **buckets**. 
+
+Buckets contain a collection of values.
+
+You can maintain constant time look up, but by using a bigger number in your hash function, you're going to require a lot more space to store your values. Also if you do this reactively and change the value in your hash function every time you have a collision, moving all your data to a new array is going to definitely increase the complexity in terms of both size and time. 
+
+With the bucket approach, you still need to iterate through some collection, though a shorter one, every time you're looking for something. 
+
+Collisions in worst case complexity is **O(m)**.
+
+You are expected to talk about the upsides and downsides to which every approach you use. 
+
+___
+
+### 7. Hash Maps
+
 
