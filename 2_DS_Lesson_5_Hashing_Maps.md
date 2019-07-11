@@ -152,4 +152,21 @@ for city in asia_sorted:
 ___
 
 
+### 4. Introduction to Hashing
+
+Using a data structure that employs a hash function allow you to do look ups in *constant time*.
+
+With everything we learned so far, we do looks ups in *linear time* 
+
+In a list or a set, you need to look through every element to find the one you're looking for. 
+
+Stacks and Queues let you look up the oldest or newest elements immediately, and priority queues will let you find the highest priority elements quickly. 
+
+The ability to do *constant time* look ups will make almost any algorithm you write instantly faster. 
+
+___
+
+### 5. Hashing
+
+ 
 
