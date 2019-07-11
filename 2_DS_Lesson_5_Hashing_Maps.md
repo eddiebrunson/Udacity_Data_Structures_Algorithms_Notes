@@ -168,5 +168,21 @@ ___
 
 ### 5. Hashing
 
- 
+The purpose of a hash function is transform some value into one that can be stored and retrieved easily. 
+
+You give it some value, it converts the value based on some formula, and spits out a coded version of the value that's often the index in an array.  
+
+One common pattern in hash functions is to take the last few digits of a big number, divide it by some consistent number, and using the remainder from that division to find a place to store that number in a array. 
+
+Example:
+
+0123456 --> 56/10 = 5 with a remainder = 6 
+
+6 | 0123456 
+
+Give your number to a hash function, which spits out a hash code that turns into the index of an array. You can go to your array and get your orginial value in constant time. Since the array look up with an index happens in constant time. 
+
+
+___
+
 
