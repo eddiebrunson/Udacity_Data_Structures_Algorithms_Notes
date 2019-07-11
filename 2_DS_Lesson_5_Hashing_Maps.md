@@ -215,4 +215,12 @@ ___
 
 ### 7. Hash Maps
 
+You can use the keys as inputs to a hash function, then store the key value pair in the bucket of the hash value producded by the function. 
 
+Since you know that the keys in a map are unique since they belong to a set. You could use a hash function to give them each their own unique buckets. 
+
+You could also design a hash function to allow for collisions. 
+
+___
+
+### 8. Hash Maps Notebook 
