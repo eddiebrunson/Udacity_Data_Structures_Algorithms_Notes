@@ -873,3 +873,11 @@ ASCII values for common characters:
 
 A hash function like that would be great for a dictionary where we need unique buckets for each string. 
 
+However, strings with just three or four letters already have a huge hash values. 
+
+"Hash" --> 72 * 31^3 + 65 * 31^2 + 83 * 31 + 72 = 2210062
+
+(72, 65, 83, 72)
+
+
+
