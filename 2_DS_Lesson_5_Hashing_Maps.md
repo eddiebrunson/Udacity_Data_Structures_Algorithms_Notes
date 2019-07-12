@@ -879,5 +879,21 @@ However, strings with just three or four letters already have a huge hash values
 
 (72, 65, 83, 72)
 
+The tradeoff is really important here. 
+
+As long as you have the space for it, a unique hash value can be really useful. 
+
+--> Lastly, why is the number 31 used here? In the hash table formula. 
+
+The earliest hash functions took advantage of some properties of the number 31 and research showed that it was a great choice for this kind of string hashing. 
+
+However, there are more complex hash functions that have been discovered. 
+
+So thirty one is more of a convention than the best value for every situation. 
+
+Remember that designing a solution for your keys is the most important thing. 
+
+Don't get too bogged down in all of these conventions. 
+
 
 
