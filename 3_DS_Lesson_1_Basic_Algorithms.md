@@ -68,4 +68,53 @@ With the example of the guessing game, you could use linear search there as well
 
 O(n)
 
+**Back to binary search**
+
+Now let's consider a different scenario: Similar to the above, we have a dictionary and a word that we want to find in that dictionary. But this time, the dictionary is sorted in alphabetical order (just as you would expect from any decent dictionary). We still don't know what page our word is on, so we'll need to search for it—but the fact that the dictionary is sorted changes the strategy we should use.
+
+> Note: With a real dictionary, we might have some idea about the approximate location of a word. For example, if the word is "aardvark", we know it is going to be close to the beginning of the dictionary, while if it is "zebra", we know it will be close to the end. For the purposes of this example, we're going to ignore this kind of information.
+
+Of the above options, the best strategy we can take is to open the dictionary in the middle.
+
+Then, we do the following:
+
+* Compare the target word with the words on this page.
+
+* If the target word comes earlier (in terms of alphabetical order), then we discard the right half of the book. From now on, we will only search in the left half.
+
+* Similarly, if the word comes later than the words on this page, then we discard the left half of the book. From now on, we will only search in the right half.
+
+Whatever happens, we are guaranteed to be able to discard half of the search space in this first step alone.
+
+Next, we repeat this process. We take the remaining half of the dictionary and we open it to the middle page. We then discard the left or right half, and repeat again. We continue this process, eliminating half of the search space at each step, until we find the target word. This is binary search.
+
+Note that the word binary means "having two parts". Binary search means we are doing a search where, at each step, we divide the input into two parts. Also note that the data we are searching through has to be sorted.
+
+Let's see what this would look like on a real data structure, such as an array:
+
+
+
+In summary:
+
+Binary search is a search algorithm where we find the position of a target value by comparing the middle value with this target value.
+
+If the middle value is equal to the target value, then we have our solution (we have found the position of our target value).
+
+If the target value comes before the middle value, we look for the target value in the left half.
+
+Otherwise, we look for the target value in the right half.
+We repeat this process as many times as needed, until we find the target value.
+
+### Lesson 2. Efficiency of Binary Search 
+
+--> How do we calculate the time complexity for Binary Search?
+
+As Brynn said in the video, we can approximate the efficiency of binary search by answering this question: How many steps do we have to take in the worst-case scenario?
+
+>Note: At each step, we check the middle element—and then we can rule out about half of the numbers (discarding everything to either the left or right). So if we start with nn numbers, then after the first step we will have half that many, or \frac{n}{2} left that we still need to check.
+
+Note: As Brynn showed, it won't always be exactly half the numbers that get discarded. If you have an even number of elements, you will have to check either the lower or higher of the middle two elements—and this means you'll rule out either half of the array, \frac{n}{2} 2n , or one more than half the array, \frac{n}{2}+1. But when we calculate time complexity using big O notation, we tend to ignore such small details, because they have negligible impact on the efficiency. Usually, we are concerned with large input sizes—on the order of, say, 10^510. 
+
+Imagine an array of size 10^510! It doesn’t really matter if each step rules out exactly half of the array, \frac{10^5}{2}  or slightly more than half of the array, \frac{10^5}{2}+1. So to keep things simple here, we will ignore the +1.
+
 
